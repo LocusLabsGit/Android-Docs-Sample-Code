@@ -10,3 +10,6 @@ These samples all use Version 2+ of the Android SDK.
 
 **Android Documentation**  
 The Android documentation that references this sample code can be viewed [here](https://android.maps.locuslabs.com/v2.0/docs/getting-started).
+
+**Support**  
+Should you require any support or would like to find out more about LocusLabs, please [email us](mailto:help@locuslabs.com).
