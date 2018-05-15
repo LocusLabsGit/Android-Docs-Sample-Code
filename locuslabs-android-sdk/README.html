@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="css/readme.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="content">
+<section id="start-here" class="level1">
+<h1>Start Here</h1>
+<ul>
+<li><a href="#quick-start-guide">Quick Start Guide</a></li>
+<li><a href="docs/index.html">API Reference</a></li>
+<li>Examples : examples/*</li>
+<li><a href="ReleaseNotes.txt">Release Notes</a></li>
+</ul>
+</section>
+<section id="quick-start-guide" class="level1">
+<h1>Quick Start Guide</h1>
+<section id="run-example-application" class="level2">
+<h2>Run Example Application</h2>
+<p>The directions below are for Android Studio 1.3 and later</p>
+<ol type="1">
+<li>Start Android Studio</li>
+<li>Click &quot;Open an Existing Android Studio Project&quot;</li>
+<li>Select the &quot;RecommendedImplementation&quot; folder</li>
+<li>Press the &quot;Play&quot; button to run the sample application</li>
+</ol>
+</section>
+<section id="integrate-into-your-android-project" class="level2">
+<h2>Integrate into your Android project</h2>
+<p>First, add the following to your module's build.gradle file should have the following:</p>
+<pre><code>    compile(&#39;com.locuslabs:sdk:+:release@aar&#39;) {
+        transitive=true
+    }</code></pre>
+<p>Then add an entry into project's build.gradle while which adds the SDK's maven repository: <sub>~</sub> allprojects { repositories { jcenter() maven { url &quot;${sdkRootDir}/maven/releases&quot; } } } <sub>~</sub></p>
+<p>Then add the needed permissions to your Manifest: <sub><sub><sub> <uses-permission android:name="android.permission.INTERNET" /> <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <uses-permission android:name="android.permission.BLUETOOTH"/> <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/> </sub></sub></sub></p>
+<p>Finally, initialize the LocusLabs SDK with the following: <sub>~</sub> LocusLabs.initialize(getApplicationContext(), &quot;YOUR_ACCOUNT_ID_HERE&quot;, new LocusLabs.OnReadyListener() { public void onReady() { // Use LocusLabs SDK..... } }); <sub>~</sub></p>
+</section>
+<section id="display-a-venue-map" class="level2">
+<h2>Display a Venue Map</h2>
+<pre><code>    AirportDatabase airportDatabase = new AirportDatabase();
+    
+    AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
+    listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+        @Override
+        public void onLoadedInitialView(View view) {
+            view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            setContentView(view);
+        }
+    };
+    
+    // The second parameter is an initial search option.
+    // The map will zoom to the first matched POI.
+    airportDatabase.loadAirportAndMap(venueId, &quot;gate:a5&quot;, listeners);</code></pre>
+</section>
+<section id="search-for-points-of-interest" class="level2">
+<h2>Search for Points of Interest</h2>
+<pre><code>    Search search = airport.search();
+    
+    // Find all of the Starbucks
+    search.search(&quot;starbucks&quot;,listener);
+    
+    // Find the stores which sell coffee
+    search.search(&quot;keyword:coffee&quot;);
+    
+    // Find Gate D3
+    search.search(&quot;gate:d3&quot;);
+    
+    // Find all of the bookstores near a position
+    List&lt;String&gt; terms = new ArrayList&lt;String&gt;(1);
+    terms.add(&quot;keyword:books&quot;);
+    
+    search.proximitySearchWithTerms(terms,position.getFloorId(),position.getLatLng().getLat(),position.getLatLng().getLng(),listener);</code></pre>
+</section>
+<section id="indoor-positioning" class="level2">
+<h2>Indoor Positioning</h2>
+<p>Enable indoor positioning on a MapView.</p>
+<pre><code>    mapView.setPositioningEnabled(true);</code></pre>
+<p>Access positioning information programmatically.</p>
+<pre><code>    UserPositionManager userPositionManager = new UserPositionManager(context);
+    userPositionManager.registerOnPositionChangedListener(listener);
+    userPositionManager.registerVenue(airport);</code></pre>
+</section>
+<section id="navigation" class="level2">
+<h2>Navigation</h2>
+<p>Calculate travel time and distance between two POIs.</p>
+<pre><code>    airport.navigateFrom(poi1.position,poi2.position,listener);</code></pre>
+</section>
+</section>
+</div>
+</body>
+</html>

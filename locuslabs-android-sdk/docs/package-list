@@ -1,0 +1,5 @@
+com.locuslabs.sdk.maps.implementation
+com.locuslabs.sdk.maps.implementation.overlay
+com.locuslabs.sdk.maps.model
+com.locuslabs.sdk.maps.service
+com.locuslabs.sdk.maps.view

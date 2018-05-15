@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.locuslabs.sdkexamplelibrary" >
+
+    <!--
+        See also com/locuslabs/android/sdk/MainActivity.java for programmatic request for these permissions
+    -->
+
+    <!-- needed for downloading map data -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- needed for error handling in case network unavailable (e.g. loading POI photos) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- needed for positioning -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="LocusLabsSample" >
+        <activity
+            android:name=".MainActivity"
+            android:label="LocusLabs Sample Library" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ExampleFlightStatus"
+            android:label="Example - Flight Status API" >
+        </activity>
+        <activity
+            android:name=".ExampleRecenterMap"
+            android:label="Example - Recentering Map" >
+        </activity>
+        <activity
+            android:name=".ExampleSearchResultsOnLoad"
+            android:label="Example - Starbucks Search Results" >
+        </activity>
+        <activity
+            android:name=".ExampleShowHideWidgets"
+            android:label="Example - Show and Hide Widgets">
+        </activity>
+        <activity
+            android:name=".ExampleShowNavigation"
+            android:label="Example - Show Navigation">
+        </activity>
+        <activity
+            android:name=".ExampleShowPoiCardView"
+            android:label="Example - Show a POI Card View">
+        </activity>
+        <activity
+            android:name=".ExampleAddExtraPoiButtons"
+            android:label="Example - Add Extra POI Buttons">
+        </activity>
+        <activity
+            android:name=".ExampleEnableUrls"
+            android:label="Example - Enable Opening URLs">
+        </activity>
+        <activity
+            android:name=".ExampleEnablePhoneNumbers"
+            android:label="Example - Enable Phone Calls">
+        </activity>
+
+        <service android:name="com.locuslabs.sdk.ibeacon.BeaconService" />
+        <service android:name="com.locuslabs.sdk.ibeacon.service.IBeaconService" />
+        <service android:name="com.locuslabs.sdk.ibeacon.IBeaconIntentProcessor" />
+    </application>
+
+</manifest>

@@ -1,0 +1,47 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+.idea/
+/.idea
+/*/*/.idea/
+.gradle
+/*/local.properties
+/*/out
+/*/*/build/
+/*/*/production
+*.iml
+*.iws
+/examples/SDKExampleLibrary/app/build
+/examples/SDKExampleLibrary/build
+/examples/RecommendedImplementation/app/build
+/examples/RecommendedImplementation/build
+/examples/SDKExampleLibrary/app/libs/sdk-release.aar
+/examples/RecommendedImplementation/app/libs/sdk-release.aar
+/examples/AirportList/app/libs/sdk-release.aar
+*.ipr
+*~
+*.swp
+.idea/workspace.xml
+build/
+
+# Symbolic link for development
+maven.temp

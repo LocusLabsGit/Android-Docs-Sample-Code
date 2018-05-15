@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body{
+   font-family: 'Roboto',serif;
+}
+
+h1{
+   font-family: 'Roboto',serif;
+   color:#24698d;
+   font-size:42px;
+}
+
+h2{
+   font-family: 'Roboto',serif;
+   color:#505050;
+   font-size:28px;
+   line-height: 1.5;
+}
+
+#content {
+    min-width: 600px;
+    width: 80%;
+    margin: auto;
+}
+
