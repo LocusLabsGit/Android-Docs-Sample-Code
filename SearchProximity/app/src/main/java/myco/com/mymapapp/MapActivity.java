@@ -1,6 +1,7 @@
 package myco.com.mymapapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -158,7 +159,16 @@ public class MapActivity extends AppCompatActivity {
 
                 airport = _airport;
                 mapView = _mapView;
-                mapView.setPositioningEnabled(_airport, true);
+                mapView.setPositioningEnabled(true);
+
+                // Inform the SDK which activity will handle certain actions like showing error messages, opening pdfs etc. from selected POIs
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+
+                        return MapActivity.this;
+                    }
+                });
 
                 mapView.setOnReadyListener(new MapView.OnReadyListener() {
 

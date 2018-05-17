@@ -1,6 +1,7 @@
 package myco.com.mymapapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -149,7 +150,16 @@ public class MapActivity extends AppCompatActivity {
             public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView, Floor floor, Marker marker) {
 
                 mapView = _mapView;
-                mapView.setPositioningEnabled(_airport, true);
+                mapView.setPositioningEnabled(true);
+
+                // Inform the SDK which activity will handle certain actions like showing error messages, opening pdfs etc. from selected POIs
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+
+                        return MapActivity.this;
+                    }
+                });
 
                 // Center and zoom the map
                 LatLng newLatlng = new LatLng(33.941384, -118.402057);

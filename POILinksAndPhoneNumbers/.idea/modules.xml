@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/POIURLs.iml" filepath="$PROJECT_DIR$/POIURLs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/POILinksAndPhoneNumbers.iml" filepath="$PROJECT_DIR$/POILinksAndPhoneNumbers.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
