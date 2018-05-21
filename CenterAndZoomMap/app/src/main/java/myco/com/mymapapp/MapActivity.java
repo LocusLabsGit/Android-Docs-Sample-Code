@@ -162,10 +162,16 @@ public class MapActivity extends AppCompatActivity {
                 });
 
                 // Center and zoom the map
-                LatLng newLatlng = new LatLng(33.941384, -118.402057);
-                Position newMapCenter = new Position(null, null, null, null, null, null, newLatlng, 0.0, 0.0);
-                mapView.setCenterPosition(newMapCenter);
-                mapView.setRadius(190.0);
+                mapView.setOnReadyListener(new MapView.OnReadyListener() {
+                    @Override
+                    public void onReady() {
+
+                        LatLng newLatlng = new LatLng(33.941384, -118.402057);
+                        Position newMapCenter = new Position(null, null, null, null, null, null, newLatlng, 0.0, 0.0);
+                        mapView.setCenterPosition(newMapCenter);
+                        mapView.setRadius(190.0);
+                    }
+                });
             }
         };
 
