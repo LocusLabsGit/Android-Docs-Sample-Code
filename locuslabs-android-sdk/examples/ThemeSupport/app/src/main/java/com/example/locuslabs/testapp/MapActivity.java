@@ -12,8 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.locuslabs.sdk.configuration.Logger;
-import com.locuslabs.sdk.maps.model.Airport;
-import com.locuslabs.sdk.maps.model.AirportDatabase;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
@@ -25,7 +25,7 @@ import com.locuslabs.sdk.maps.view.MapView;
  */
 public class MapActivity extends Activity {
 
-    private AirportDatabase airportDatabase;
+    private VenueDatabase venueDatabase;
     private MapView mapView;
 
     @Override
@@ -37,11 +37,11 @@ public class MapActivity extends Activity {
         //Takes the String venueId to determine what venue needs to be used for loadMap
         String venueId = receivedIntent.getStringExtra("venueId");
 
-        //Create an AirportDatabase which allows airports to be loaded.
-        airportDatabase = new AirportDatabase();
+        //Create an VenueDatabase which allows venues to be loaded.
+        venueDatabase = new VenueDatabase();
 
-        //Load the Airport specified by the venueId passed to the activity.
-        loadAirport(venueId);
+        //Load the Venue specified by the venueId passed to the activity.
+        loadVenue(venueId);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class MapActivity extends Activity {
 
         //-----------------------------------
         // Be sure to close the mapView and
-        // airportDatabase to release the memory
+        // venueDatabase to release the memory
         // they consume.
         //-----------------------------------
 
@@ -65,19 +65,19 @@ public class MapActivity extends Activity {
             mapView.close();
         }
 
-        if ( airportDatabase != null ) {
-            airportDatabase.close();
+        if ( venueDatabase != null ) {
+            venueDatabase.close();
         }
 
-        airportDatabase = null;
+        venueDatabase = null;
         mapView = null;
     }
 
-    private void loadAirport(String venueId) {
+    private void loadVenue(final String venueId) {
         final RelativeLayout rl = new RelativeLayout(this);
 
-        AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
-        listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+        VenueDatabase.OnLoadVenueAndMapListeners listeners = new VenueDatabase.OnLoadVenueAndMapListeners();
+        listeners.loadedInitialViewListener = new VenueDatabase.OnLoadedInitialViewListener() {
             @Override
             public void onLoadedInitialView(View view) {
                 ViewGroup parent = (ViewGroup) view.getParent();
@@ -88,32 +88,31 @@ public class MapActivity extends Activity {
                 view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
                 rl.addView(view);
                 setContentView(rl);
-                airportDatabase.resumeLoadAirportAndMap();
+                venueDatabase.resumeLoadVenueAndMap();
             }
         };
-        listeners.loadCompletedListener = new AirportDatabase.OnLoadCompletedListener() {
+        listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
             @Override
-            public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView, Floor floor, Marker marker) {
+            public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView, Floor floor, Marker marker) {
                 mapView = _mapView;
-                mapView.setPositioningEnabled(_airport, true);
+                mapView.setPositioningEnabled(true);
                 setMapViewTheme(_mapView);
 
-                attachFunctionalityToMapView(_mapView);
+                attachFunctionalityToMapView(_mapView, venueId);
             }
         };
 
         // The second parameter is an initial search option.
         // The map will zoom to the first matched POI.
         String initialSearch;
-        if ("sea".equalsIgnoreCase(venueId))        initialSearch = "Gate A5";
-        else if ("lax".equalsIgnoreCase(venueId))   initialSearch = "Gate 80";
-        else                                        initialSearch = null;
-        airportDatabase.loadAirportAndMap(venueId, initialSearch, listeners);
+        if ("lax".equalsIgnoreCase(venueId))   initialSearch = "Gate 80";
+        else                                   initialSearch = null;
+        venueDatabase.loadVenueAndMap(venueId, initialSearch, listeners);
     }
 
 
 
-    private void attachFunctionalityToMapView(final MapView mapView) {
+    private void attachFunctionalityToMapView(final MapView mapView, final String venueId) {
 
         mapView.setOnReadyListener(new MapView.OnReadyListener() {
             @Override
@@ -125,7 +124,9 @@ public class MapActivity extends Activity {
                 trySupplyCurrentActivity();
 
                 // Let's take a look at our new Theme for the POI ViewGroup!
-                mapView.showPoiPopup("126");
+                if ("sea".equalsIgnoreCase(venueId)) {
+                    mapView.showPoiPopup("126"); // Mountain Room Bar
+                }
             }
         });
 

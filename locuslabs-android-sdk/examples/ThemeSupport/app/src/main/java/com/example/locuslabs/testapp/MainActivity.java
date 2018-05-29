@@ -2,14 +2,10 @@ package com.example.locuslabs.testapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.locuslabs.sdk.configuration.LocusLabs;
-import com.locuslabs.sdk.maps.model.Theme;
-import com.locuslabs.sdk.maps.view.MapView;
 
 
 public class MainActivity extends Activity {
@@ -40,20 +36,18 @@ public class MainActivity extends Activity {
                 if (exception != null) {
                     Log.e(TAG, exception.getMessage());
                 }
-                //After the Map Pack is unpacked, show a list of Airport Venues available to the provided AccountId.
-                showAirportList(venueListContents);
+                // After the Map Pack is unpacked, show a list of Venues available to the provided AccountId.
+                showVenuesList();
             }
         });
     }
 
-    protected void showAirportList( final String venueListContents ) {
+    protected void showVenuesList() {
         LocusLabs.setLogLevel(LocusLabs.LogLevelDebug);
         // Now that the map pack is installed load the map.
         LocusLabs.initialize(MainActivity.this.getApplicationContext(), ACCOUNT_ID, new LocusLabs.OnReadyListener() {
             public void onReady() {
-                Intent intent = new Intent(getApplicationContext(), AirportListActivity.class);
-                //The selected Venue ID from the Airport List will be the Airport loaded on startActivity
-                intent.putExtra("venueListContents", venueListContents);
+                Intent intent = new Intent(getApplicationContext(), VenueListActivity.class);
                 startActivity(intent);
             }
         });

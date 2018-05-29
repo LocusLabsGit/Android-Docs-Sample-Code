@@ -20,6 +20,8 @@ import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
 import com.locuslabs.sdk.maps.model.Position;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
 
 /**
@@ -32,7 +34,7 @@ public class MapActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
 
     // Var
-    private AirportDatabase airportDatabase;
+    private VenueDatabase   venueDatabase;
     private MapView         mapView;
 
     // *************
@@ -83,10 +85,10 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if (airportDatabase != null) {
+        if (mapView != null) {
 
-            airportDatabase.close();
-            airportDatabase = null;
+            mapView.close();
+            mapView = null;
         }
 
         if (mapView != null) {
@@ -114,18 +116,18 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onReady() {
 
-                airportDatabase = new AirportDatabase();
-                loadVenueAndMap("lax", "name of the venue you want to appear");
+                venueDatabase = new VenueDatabase();
+                loadVenueAndEmbeddedMap("lax", "name of the venue you want to appear");
             }
         });
     }
 
-    private void loadVenueAndMap(final String venueId, final String venueName) {
+    private void loadVenueAndEmbeddedMap(final String venueId, final String venueName) {
 
         final RelativeLayout rl = new RelativeLayout(this);
 
-        AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
-        listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+        VenueDatabase.OnLoadVenueAndMapListeners listeners = new VenueDatabase.OnLoadVenueAndMapListeners();
+        listeners.loadedInitialViewListener = new VenueDatabase.OnLoadedInitialViewListener() {
             @Override
             public void onLoadedInitialView(View view) {
 
@@ -139,20 +141,22 @@ public class MapActivity extends AppCompatActivity {
                 view.setLayoutParams(new RelativeLayout.LayoutParams(600, 360));
                 rl.addView(view);
                 setContentView(rl);
-                airportDatabase.resumeLoadAirportAndMap();
+                venueDatabase.resumeLoadVenueAndMap();
             }
         };
 
-        listeners.loadCompletedListener = new AirportDatabase.OnLoadCompletedListener() {
+        listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
             @Override
-            public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView, Floor floor, Marker marker) {
+            public void onLoadCompleted(Venue venue, Map map, MapView _mapView, Floor floor, Marker marker) {
+
+                mapView = _mapView;
 
                 // Hide all ui elements like the search bar, directions and level buttons
-                _mapView.hideAllWidgets();
+                mapView.hideAllWidgets();
             }
         };
 
         // The second parameter is an initial search option, if any
-        airportDatabase.loadAirportAndMap(venueId, null, listeners);
+        venueDatabase.loadVenueAndMap(venueId, null, listeners);
     }
 }

@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
     }
 
     protected void showFlightCard() {
-        LocusLabs.setLogLevel(LocusLabs.LogLevelDebug);
+        LocusLabs.setLogLevel(LocusLabs.LogLevelTrace);
         // Now that the map pack is installed load the map.
         LocusLabs.initialize(MainActivity.this.getApplicationContext(), ACCOUNT_ID, new LocusLabs.OnReadyListener() {
             public void onReady() {

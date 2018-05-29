@@ -26,6 +26,8 @@ import com.locuslabs.sdk.maps.model.Position;
 import com.locuslabs.sdk.maps.model.Search;
 import com.locuslabs.sdk.maps.model.SearchResult;
 import com.locuslabs.sdk.maps.model.SearchResults;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
 
 import java.util.List;
@@ -40,9 +42,9 @@ public class MapActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
 
     // Var
-    private Airport         airport;
-    private AirportDatabase airportDatabase;
     private MapView         mapView;
+    private Venue           venue;
+    private VenueDatabase   venueDatabase;
 
     // *************
     // LIFECYCLE
@@ -64,7 +66,7 @@ public class MapActivity extends AppCompatActivity {
                             Manifest.permission.BLUETOOTH_ADMIN,
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_COARSE_LOCATION},
-                    PERMISSIONS_REQUEST_CODE);
+                            PERMISSIONS_REQUEST_CODE);
         }
         // Global permissions (Android versions prior to m)
         else {
@@ -92,10 +94,10 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if (airportDatabase != null) {
+        if (venueDatabase != null) {
 
-            airportDatabase.close();
-            airportDatabase = null;
+            venueDatabase.close();
+            venueDatabase = null;
         }
 
         if (mapView != null) {
@@ -123,7 +125,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onReady() {
 
-                airportDatabase = new AirportDatabase();
+                venueDatabase = new VenueDatabase();
                 loadVenueAndMap("lax", "name of the venue you want to appear");
             }
         });
@@ -133,8 +135,8 @@ public class MapActivity extends AppCompatActivity {
 
         final RelativeLayout rl = new RelativeLayout(this);
 
-        AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
-        listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+        VenueDatabase.OnLoadVenueAndMapListeners listeners = new VenueDatabase.OnLoadVenueAndMapListeners();
+        listeners.loadedInitialViewListener = new VenueDatabase.OnLoadedInitialViewListener() {
             @Override
             public void onLoadedInitialView(View view) {
 
@@ -147,16 +149,15 @@ public class MapActivity extends AppCompatActivity {
                 view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
                 rl.addView(view);
                 setContentView(rl);
-                airportDatabase.resumeLoadAirportAndMap();
-
+                venueDatabase.resumeLoadVenueAndMap();
             }
         };
 
-        listeners.loadCompletedListener = new AirportDatabase.OnLoadCompletedListener() {
+        listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
             @Override
-            public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView, Floor floor, Marker marker) {
+            public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView, Floor floor, Marker marker) {
 
-                airport = _airport;
+                venue = _venue;
                 mapView = _mapView;
                 mapView.setPositioningEnabled(true);
 
@@ -180,7 +181,7 @@ public class MapActivity extends AppCompatActivity {
             }
         };
 
-        listeners.loadFailedListener = new AirportDatabase.OnLoadFailedListener() {
+        listeners.loadFailedListener = new VenueDatabase.OnLoadFailedListener() {
             @Override
             public void onLoadFailed(String s) {
 
@@ -189,12 +190,12 @@ public class MapActivity extends AppCompatActivity {
         };
 
         // The second parameter is an optional initial search term
-        airportDatabase.loadAirportAndMap(venueId, null, listeners);
+        venueDatabase.loadVenueAndMap(venueId, null, listeners);
     }
 
     private void performGeneralSearch(String searchTerm) {
 
-        Search search = airport.search();
+        Search search = venue.search();
 
         Search.OnSearchResultsListener searchResultsListener = new Search.OnSearchResultsListener() {
 

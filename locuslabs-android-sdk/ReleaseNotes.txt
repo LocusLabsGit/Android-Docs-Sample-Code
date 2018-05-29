@@ -1,3 +1,47 @@
+LocusLabs Android SDK v2.0.46 2018-05-22
+
+  - Updates to a number of API's to reference "venue" instead of "airport"
+  
+LocusLabs Android SDK v2.0.45 2018-05-15
+
+  - Switch floors when tapping on portal icons during navigation
+  - Override device's locale setting
+  
+LocusLabs Android SDK v2.0.44 2018-05-08
+
+  - Bug fix: Allow full scroll of level selector at venues with many floors (e.g. DXB airport)
+  - Bug fix: Log level selector tap from navigation screen for analytics
+  - Bug fix: Hide "search results on other levels" message when user searches a second time
+  - Bug fix: Corrected layout of "search results on other levels" for German and Korean
+  - Special note: Add "google()" to your project-level build.gradle file under allprojects.repositories to avoid compile-time error message "Could not find com.android.support.constraint:constraint-layout:1.1.0.".
+  
+LocusLabs Android SDK v2.0.43 2018-05-01
+
+  - Miscellaneous bug fixes
+
+LocusLabs Android SDK v2.0.42 2018-04-24
+
+  - Bug fix: Prevent NullPointerException in LLBottomSheetBehavior.onNestedPreFling()
+  - Upgraded compileSdk from 26 to 27
+
+LocusLabs Android SDK v2.0.41 2018-04-17
+
+  - Fine-tuned beacon-based positioning algorithm to reduce flakiness near a beacon
+  - Localization
+
+LocusLabs Android SDK v2.0.40 2018-04-10
+
+  - Bug fix: Scope search results to a building when a building is in view
+  - Bug fix: Turning off Follow me Mode while tracking current location
+  - Bug fix: Escaped apostrophes in sdk/src/main/res/values-it/common_strings.xml
+  - Localization
+
+LocusLabs Android SDK v2.0.39 2018-04-03
+
+  - Zoom out to view all results on map
+  - My Location should be deactivated when position can't be determined
+  - Localization
+
 LocusLabs Android SDK v2.0.38 2018-03-27
 
   - Upgraded Android Plugin for Gradle to 3.0.1 (see "Upgrading from 1.2 to 2.0" for required build.gradle changes)

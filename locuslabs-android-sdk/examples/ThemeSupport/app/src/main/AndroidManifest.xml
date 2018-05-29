@@ -3,7 +3,7 @@
     package="com.example.locuslabs.testapp" >
 
     <!--
-        See also com/locuslabs/android/sdk/AirportListActivity.java for programmatic request for these permissions
+        See also com/locuslabs/android/VenueListActivityvity.java for programmatic request for these permissions
     -->
 
     <!-- needed for downloading map data -->
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AirportListActivity"
+            android:name=".VenueListActivity"
             android:label="Terminal List" >
         </activity>
         <activity

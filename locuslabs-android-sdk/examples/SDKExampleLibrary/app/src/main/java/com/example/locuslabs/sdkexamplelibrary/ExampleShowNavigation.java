@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.locuslabs.sdk.maps.model.Airport;
-import com.locuslabs.sdk.maps.model.AirportDatabase;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
 import com.locuslabs.sdk.maps.model.POI;
 import com.locuslabs.sdk.maps.model.POIDatabase;
 import com.locuslabs.sdk.maps.model.Position;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
 
 /*
@@ -26,23 +26,23 @@ import com.locuslabs.sdk.maps.view.MapView;
 public class ExampleShowNavigation extends Activity {
     private static final String TAG = "ExampleShowNavigation";
 
-    private AirportDatabase airportDatabase;
+    private VenueDatabase venueDatabase;
     private MapView mapView;
-    private Airport airport;
+    private Venue venue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //This activity takes a venueId parameter. The venueId represents the Airport to be loaded.
+        // This activity takes a venueId parameter. The venueId represents the Venue to be loaded.
         Intent receivedIntent = getIntent();
         String venueId = receivedIntent.getStringExtra("venueId");
 
-        //Create an AirportDatabase which allows airports to be loaded.
-        airportDatabase = new AirportDatabase();
+        // Create an VenueDatabase which allows venues to be loaded.
+        venueDatabase = new VenueDatabase();
 
-        //Load the Airport specified by the venueId passed to the activity.
-        loadAirport(venueId);
+        // Load the Venue specified by the venueId passed to the activity.
+        loadVenue(venueId);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ExampleShowNavigation extends Activity {
 
         //-----------------------------------
         // Be sure to close the mapView and
-        // airportDatabase to release the memory
+        // venueDatabase to release the memory
         // they consume.
         //-----------------------------------
 
@@ -66,19 +66,19 @@ public class ExampleShowNavigation extends Activity {
             mapView.close();
         }
 
-        if ( airportDatabase != null ) {
-            airportDatabase.close();
+        if ( venueDatabase != null ) {
+            venueDatabase.close();
         }
 
-        airportDatabase = null;
+        venueDatabase = null;
         mapView = null;
     }
 
-    private void loadAirport(String venueId) {
+    private void loadVenue(String venueId) {
         final RelativeLayout rl = new RelativeLayout( this );
 
-        AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
-        listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+        VenueDatabase.OnLoadVenueAndMapListeners listeners = new VenueDatabase.OnLoadVenueAndMapListeners();
+        listeners.loadedInitialViewListener = new VenueDatabase.OnLoadedInitialViewListener() {
             @Override public void onLoadedInitialView(View view) {
                 ViewGroup parent = (ViewGroup) view.getParent();
                 if (parent != null) {
@@ -90,25 +90,25 @@ public class ExampleShowNavigation extends Activity {
                         LinearLayout.LayoutParams.MATCH_PARENT));
                 rl.addView(view);
                 setContentView(rl);
-                airportDatabase.resumeLoadAirportAndMap();
+                venueDatabase.resumeLoadVenueAndMap();
             }
         };
-        listeners.loadCompletedListener = new AirportDatabase.OnLoadCompletedListener() {
+        listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
 
-            @Override public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView,
+            @Override public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView,
                                                   Floor floor, Marker marker) {
-                airport = _airport;
+                venue = _venue;
                 mapView = _mapView;
                 showNavigation();
             }
         };
 
-        airportDatabase.loadAirportAndMap(venueId, null, listeners);
+        venueDatabase.loadVenueAndMap(venueId, null, listeners);
     }
 
     //To show a navigation you need two position. In the example below retrieve two POIs for establishing a starting Poistion and an ending Position
     private void showNavigation() {
-        final POIDatabase poiDatabase = airport.poiDatabase();
+        final POIDatabase poiDatabase = venue.poiDatabase();
 
         poiDatabase.loadPOI("15", new POIDatabase.OnLoadPoiListener() {
             @Override

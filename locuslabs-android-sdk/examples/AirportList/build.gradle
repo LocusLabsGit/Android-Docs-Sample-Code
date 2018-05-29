@@ -17,7 +17,8 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            url "../../../maven/releases"
+            url "${sdkRoot}/maven/releases"
         }
+        google()
     }
 }

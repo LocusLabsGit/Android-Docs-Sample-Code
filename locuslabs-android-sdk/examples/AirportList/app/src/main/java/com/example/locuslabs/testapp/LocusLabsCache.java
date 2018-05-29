@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 
 import android.content.Context;
 
+import com.locuslabs.sdk.configuration.Configuration;
+
 public class LocusLabsCache {
 
     private static DateFormat dateFormat = null;
@@ -26,11 +28,11 @@ public class LocusLabsCache {
         return asset.replaceAll( "/", "-" );
     }
     public static String getAccountId() {
-        if ( com.locuslabs.sdk.configuration.Configuration.shared == null ) {
-            return MainActivity.ACCOUNT_ID;
+        if ( null != Configuration.shared && null != Configuration.shared.getAccountId()) {
+            return Configuration.shared.getAccountId();
         }
         else {
-            return com.locuslabs.sdk.configuration.Configuration.shared.getAccountId();
+            return MainActivity.ACCOUNT_ID;
         }
     }
 
