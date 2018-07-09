@@ -166,7 +166,21 @@ public class MapActivity extends AppCompatActivity {
                     }
                 });
 
-                showDirections();
+                mapView.setOnClickPoiListener(new MapView.OnClickPoiListener() {
+                    @Override
+                    public boolean onClickPoi(Position position, String s) {
+                        Log.d("FFF", "id:" +s);// 1025 Blu20 Bar  Gate 74A id:571
+                        return false;
+                    }
+                });
+
+                mapView.setOnReadyListener(new MapView.OnReadyListener() {
+                    @Override
+                    public void onReady() {
+
+                        showDirections();
+                    }
+                });
             }
         };
 
@@ -186,11 +200,13 @@ public class MapActivity extends AppCompatActivity {
 
         final POIDatabase poiDatabase = venue.poiDatabase();
 
-        poiDatabase.loadPOI("15", new POIDatabase.OnLoadPoiListener() {
+        // Start at Blu20 Bar
+        poiDatabase.loadPOI("1025", new POIDatabase.OnLoadPoiListener() {
             @Override
             public void onLoadPoi(final POI startPOI) {
 
-                poiDatabase.loadPOI("126", new POIDatabase.OnLoadPoiListener() {
+                // End at Gate74A
+                poiDatabase.loadPOI("571", new POIDatabase.OnLoadPoiListener() {
                     @Override
                     public void onLoadPoi(final POI endPOI) {
 
@@ -205,6 +221,7 @@ public class MapActivity extends AppCompatActivity {
                                 .createPosition();
 
                         mapView.showNavigation(startPosition, endPosition);
+
                     }
                 });
             }
