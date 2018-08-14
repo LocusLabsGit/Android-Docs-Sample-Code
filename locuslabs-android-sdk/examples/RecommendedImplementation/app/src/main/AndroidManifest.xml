@@ -23,7 +23,8 @@
         android:label="LocusLabsSample" >
         <activity
             android:name=".MainActivity"
-            android:label="LocusLabs Sample" >
+            android:label="LocusLabs RecommendedImplementation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,11 +32,13 @@
         </activity>
         <activity
             android:name=".FlightCardActivity"
-            android:label="SEA/LAX" >
+            android:label="SEA/LAX"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="LocusLabs Map" >
+            android:label="LocusLabs Map"
+            android:screenOrientation="portrait" >
         </activity>
 
         <service android:name="com.locuslabs.sdk.ibeacon.BeaconService" />

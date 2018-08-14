@@ -2,34 +2,24 @@
 package com.example.locuslabs.recommendedimplementation;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
-import android.graphics.Color;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.locuslabs.sdk.maps.model.Airport;
-import com.locuslabs.sdk.maps.model.AirportDatabase;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
-
-import java.util.List;
-
-import static android.graphics.Color.parseColor;
 
 public class MapFragment extends Fragment {
     private static final String TAG = "MapFragment";
@@ -38,9 +28,9 @@ public class MapFragment extends Fragment {
     private String venueId = null;
 
     private MapView mapView = null;
-    private AirportDatabase airportDatabase = null;
+    private VenueDatabase venueDatabase = null;
     private ProgressBar progressBar;
-    private TextView progresBarMessage;
+    private TextView progressBarMessage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,57 +38,55 @@ public class MapFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onStop() {
+        super.onStop();
 
         //-----------------------------------
         // Be sure to close the mapView and
-        // airportDatabase to release the memory
+        // venueDatabase to release the memory
         // they consume.
         //-----------------------------------
 
-        if ( mapView != null ) {
+        if (mapView != null) {
             mapView.close();
         }
 
-        if ( airportDatabase != null ) {
-            airportDatabase.close();
+        if (venueDatabase != null) {
+            venueDatabase.close();
         }
 
-        airportDatabase = null;
+        venueDatabase = null;
         mapView = null;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.map, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.map, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        //Create an AirportDatabase which allows airports to be loaded.
-        airportDatabase = new AirportDatabase();
+        // Create a VenueDatabase which allows venues to be loaded.
+        venueDatabase = new VenueDatabase();
 
         Intent receivedIntent = getActivity().getIntent();
         this.venueId = receivedIntent.getStringExtra("venueId");
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ){
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,330,(float)0.1);
-           this.getView().setLayoutParams(params);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 330, (float) 0.1);
+            this.getView().setLayoutParams(params);
         }
 
         progressBar = getView().findViewById(R.id.progress);
-        progresBarMessage = getView().findViewById(R.id.progressBarMessage);
-        loadAirport(venueId);
+        progressBarMessage = getView().findViewById(R.id.progressBarMessage);
+        loadVenue(venueId);
     }
 
-    private void loadAirport(final String venueId) {
-        AirportDatabase.OnLoadAirportAndMapListeners listeners = new AirportDatabase.OnLoadAirportAndMapListeners();
-        listeners.loadedInitialViewListener = new AirportDatabase.OnLoadedInitialViewListener() {
+    private void loadVenue(final String venueId) {
+        VenueDatabase.OnLoadVenueAndMapListeners listeners = new VenueDatabase.OnLoadVenueAndMapListeners();
+        listeners.loadedInitialViewListener = new VenueDatabase.OnLoadedInitialViewListener() {
             @Override
             public void onLoadedInitialView(View view) {
                 ViewGroup parent = (ViewGroup) view.getParent();
@@ -107,13 +95,13 @@ public class MapFragment extends Fragment {
                 }
 
                 view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                ((ViewGroup)getView()).addView(view);
-                airportDatabase.resumeLoadAirportAndMap();
+                ((ViewGroup) getView()).addView(view);
+                venueDatabase.resumeLoadVenueAndMap();
             }
         };
-        listeners.loadCompletedListener = new AirportDatabase.OnLoadCompletedListener() {
+        listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
             @Override
-            public void onLoadCompleted(Airport _airport, Map _map, final MapView _mapView, Floor floor, Marker marker) {
+            public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView, Floor floor, Marker marker) {
                 mapView = _mapView;
                 mapView.hideAllWidgets();
 
@@ -125,23 +113,23 @@ public class MapFragment extends Fragment {
             }
         };
 
-        listeners.loadProgressListener = new AirportDatabase.OnLoadProgressListener() {
+        listeners.loadProgressListener = new VenueDatabase.OnLoadProgressListener() {
             @Override
             public void onLoadProgress(Integer percentComplete) {
-                progresBarMessage.setText(MapActivity.PROGRESS_MESSAGE+percentComplete+"%");
+                progressBarMessage.setText(MapActivity.PROGRESS_MESSAGE + percentComplete + "%");
                 progressBar.setProgress(percentComplete);
-                progresBarMessage.invalidate();
+                progressBarMessage.invalidate();
                 progressBar.invalidate();
             }
         };
 
         // The second parameter is an initial search option.
         // The map will zoom to the first matched POI.
-        airportDatabase.loadAirportAndMap(venueId, "gate:a5", listeners);
+        venueDatabase.loadVenueAndMap(venueId, "gate:a5", listeners);
     }
 
-    private void setupButton( ViewGroup viewGroup, final String venueId ) {
-        if ( this.button == null ) {
+    private void setupButton(ViewGroup viewGroup, final String venueId) {
+        if (this.button == null) {
             this.button = new Button(this.getActivity().getApplicationContext());
             this.button.setBackgroundColor(Color.TRANSPARENT);
             this.button.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +145,4 @@ public class MapFragment extends Fragment {
         this.button.setVisibility(View.VISIBLE);
         viewGroup.addView(this.button);
     }
-
 }
-

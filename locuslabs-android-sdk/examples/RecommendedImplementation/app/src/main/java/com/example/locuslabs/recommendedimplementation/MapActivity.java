@@ -33,7 +33,7 @@ public class MapActivity extends Activity {
         Intent receivedIntent = getIntent();
         String venueId = receivedIntent.getStringExtra("venueId");
 
-        //Create an VenueDatabase which allows venues to be loaded.
+        // Create a VenueDatabase which allows venues to be loaded.
         venueDatabase = new VenueDatabase();
 
         progressDialog = new ProgressDialog(this);
