@@ -1,0 +1,42 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/default_loading_bg" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/progressBarMessageMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Downloading map...0%"
+            android:textColor="#e5e5e5"
+            android:textSize="16sp"
+            android:paddingBottom="15.5dp"
+            android:gravity="center_horizontal"
+            />
+        <ProgressBar android:id="@+id/progressMap"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:max="100"
+            android:minHeight="2dp"
+            android:minWidth="240dp"
+            android:progress="1"
+            android:progressDrawable="@drawable/progress_bar_theme" />
+        />
+    </LinearLayout>
+
+</FrameLayout>

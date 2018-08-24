@@ -117,7 +117,7 @@ public class MapActivity extends AppCompatActivity {
             public void onReady() {
 
                 venueDatabase = new VenueDatabase();
-                loadVenueAndMap("lax", "name of the venue you want to appear");
+                loadVenueAndMap("hnl", "name of the venue you want to appear");
             }
         });
     }

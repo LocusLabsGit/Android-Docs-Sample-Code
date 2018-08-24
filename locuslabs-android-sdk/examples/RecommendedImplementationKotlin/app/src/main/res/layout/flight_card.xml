@@ -1,0 +1,358 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#C0C0C0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.locuslabs.recommendedimplementation.MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <!-- Flight Card -->
+        <RelativeLayout
+            android:id="@+id/flight_card"
+            android:layout_width="wrap_content"
+            android:layout_height="330dp"
+            android:paddingTop="5dp"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:id="@+id/flightCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Steve Jobs"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:textColor="#000000"
+                        android:text="PREMIUM PASSENGER" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:height="40dp"
+                    android:background="#DCDCDC"
+                    android:gravity="center"
+                    android:text="Airline Flight 201"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Check-In"
+                        android:textColor="#4682B4"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Change Seats"
+                        android:textColor="#4682B4"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <View
+                    android:background="#000000"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp" />
+
+                <!-- Departure Line -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MONDAY JULY 6, 2015"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="4"
+                        android:orientation="horizontal"
+                        android:rowCount="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="40dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DEPART"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SEA"
+                                android:textColor="#4682B4"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="50dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TIME"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="9:20a"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="40dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="GATE"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="A5"
+                                android:textColor="#4682B4"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SEAT"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12A"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+
+
+                <View
+                    android:background="#000000"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp" />
+
+
+                <!-- Arrival Line -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MONDAY JULY 6, 2015"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="4"
+                        android:orientation="horizontal"
+                        android:rowCount="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="40dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ARRIVE"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LAX"
+                                android:textColor="#4682B4"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="40dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TIME"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11:07a"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="40dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="GATE"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="44F"
+                                android:textColor="#4682B4"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BAG"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="5"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <!-- Map -->
+
+         <fragment
+             android:layout_weight="20"
+             android:id="@+id/mapFragment"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             class="com.example.locuslabs.recommendedimplementation.MapFragment" >
+
+             <ImageView
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_alignParentBottom="true"
+                 android:scaleType="fitXY"
+                 android:src="@drawable/default_loading_bg" />
+             <LinearLayout
+                 android:orientation="vertical"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 >
+                 <TextView
+                     android:id="@+id/progressBarMessage"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     tools:text="Downloading map...0%"
+                     android:textColor="#e5e5e5"
+                     android:textSize="16sp"
+                     android:paddingBottom="15.5dp"
+                     android:gravity="center_horizontal"
+                     />
+                 <ProgressBar android:id="@+id/progress"
+                     style="?android:attr/progressBarStyleHorizontal"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:max="100"
+                     android:minHeight="2dp"
+                     android:minWidth="240dp"
+                     android:progress="1"
+                     android:progressDrawable="@drawable/progress_bar_theme" />
+                 />
+             </LinearLayout>
+
+         </fragment>
+
+    </LinearLayout>
+</RelativeLayout>
