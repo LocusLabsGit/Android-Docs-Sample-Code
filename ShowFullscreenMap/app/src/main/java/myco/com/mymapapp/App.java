@@ -14,7 +14,6 @@ public class App extends Application {
     public void onCreate() {
 
         super.onCreate();
-        LocusLabs.initialize(getApplicationContext(),"A1D4XY4NEBABI9");
-        //LocusLabs.initialize(getApplicationContext(),"A11F4Y6SZRXH4X");
+        LocusLabs.initialize(getApplicationContext(),"A11F4Y6SZRXH4X");
     }
 }

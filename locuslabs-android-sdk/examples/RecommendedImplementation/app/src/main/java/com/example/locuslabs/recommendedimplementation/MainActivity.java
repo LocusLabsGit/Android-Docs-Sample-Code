@@ -48,10 +48,6 @@ public class MainActivity extends Activity {
         }
 
         setContentView(R.layout.activity_main);
-    }
-
-    protected void onResume() {
-        super.onResume();
 
         // If the Map Pack name is null, it will automatically search
         // for a map pack in the assets/locuslabs directory.  The search will
@@ -66,6 +62,10 @@ public class MainActivity extends Activity {
                 showFlightCard();
             }
         });
+    }
+
+    protected void onResume() {
+        super.onResume();
     }
 
     protected void showFlightCard() {
@@ -93,7 +93,8 @@ public class MainActivity extends Activity {
             }
             else {
                 Log.d("LocusLabsMapPack", "Looking for Map Pack: " );
-                pack = new LocusLabsMapPack( cache, finder.getNewestMapPackName(), finder.getNewestMapPack() );
+                String newestMapPackName = finder.getNewestMapPackName();
+                pack = new LocusLabsMapPack( cache, newestMapPackName, finder.getAsMapPack(newestMapPackName) );
             }
 
             if ( pack.needsInstall() ) {

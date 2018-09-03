@@ -1,13 +1,13 @@
 package com.example.locuslabs.recommendedimplementation;
 
-import java.io.File;
-import java.text.DateFormat;
-import java.util.TimeZone;
-import java.text.SimpleDateFormat;
-
 import android.content.Context;
 
 import com.locuslabs.sdk.configuration.Configuration;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public class LocusLabsCache {
 
@@ -24,9 +24,6 @@ public class LocusLabsCache {
 
     private final File cacheDir;
 
-    public static String filenameForAsset( String asset ) {
-        return asset.replaceAll( "/", "-" );
-    }
     public static String getAccountId() {
         if ( null != Configuration.shared && null != Configuration.shared.getAccountId()) {
             return Configuration.shared.getAccountId();
@@ -42,10 +39,6 @@ public class LocusLabsCache {
         return new LocusLabsCache( defaultDir );
     }
 
-    public static LocusLabsCache getCustomCache( File directory ) {
-        return new LocusLabsCache( directory );
-    }
-
     protected LocusLabsCache( File directory ) {
         this.cacheDir = directory;
         if ( !this.cacheDir.exists() ) {
@@ -58,15 +51,11 @@ public class LocusLabsCache {
     }
 
     public String pathForAsset( String asset ) {
-        return this.cacheDir.getAbsolutePath() + File.separator + LocusLabsCache.filenameForAsset( asset );
+        return this.cacheDir.getAbsolutePath() + File.separator + "assets.locuslabs.com" +  File.separator + asset;
     }
 
     public String venueListAsset() {
-        return "accounts-" + getAccountId() + "-v3.js";
-    }
-
-    public String getVenueListContents() {
-        return Utilities.getFileAsString( this.pathForAsset( this.venueListAsset() ) );
+        return "accounts/" + getAccountId() + "/v4.js";
     }
 
     public String getLatestInstalledVersion() {

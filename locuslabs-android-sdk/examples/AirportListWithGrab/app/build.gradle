@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+
+def getStore = { ->
+    def result = project.hasProperty('storeFile') ? storeFile : "keystore-required"
+    return file(result)
+}
+
+def getStorePassword = { ->
+    def result = project.hasProperty('storePassword') ? storePassword : ""
+    return result
+}
+
+def getKeyAlias = { ->
+    def result = project.hasProperty('keyAlias') ? keyAlias : ""
+    return result
+}
+
+def getKeyPassword = { ->
+    def result = project.hasProperty('keyPassword') ? keyPassword : ""
+    return result
+}
+
+repositories {
+    flatDir {
+        dirs "${project.rootDir}/sdk/build/outputs/aar"
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId 'com.example.locuslabs.airportlist'
+        minSdkVersion 21
+        targetSdkVersion 27
+    }
+    signingConfigs {
+        development {
+            storeFile getStore()
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+        release {
+            storeFile getStore()
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            minifyEnabled false
+            useProguard true
+            zipAlignEnabled false
+        }
+        development {
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.development
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            minifyEnabled false
+            proguardFile 'proguard-rules.pro'
+            zipAlignEnabled false
+        }
+        release {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+            renderscriptDebuggable false
+            renderscriptOptimLevel 3
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFile 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // LocusLabs SDK Dependency
+    // Also see allprojects.repositories.maven entry in project-level build.gradle
+    // to avoid error 'Failed to resolve: com.locuslabs:sdk:+'
+    implementation (group: 'com.locuslabs', name: 'sdk', version: '+') {
+        transitive = true
+    }
+
+    implementation 'org.tukaani:xz:1.5'
+
+    // Grab Framework (see https://docs.poweredbygrab.com/docs/initial-setup-1)
+    implementation (name: 'grab-framework-1.1.20', ext: 'aar')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation group: 'com.googlecode.libphonenumber', name: 'libphonenumber', version: '8.4.1'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.wunderlist:sliding-layer:1.2.5'
+    implementation 'io.card:android-sdk:5.1.1'
+    implementation ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar') {
+        transitive=true
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}

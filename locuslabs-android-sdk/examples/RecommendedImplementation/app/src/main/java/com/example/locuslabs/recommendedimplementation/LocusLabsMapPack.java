@@ -39,8 +39,25 @@ public class LocusLabsMapPack {
     }
 
     public boolean needsInstall() {
-        return ( this.cache.getLatestInstalledVersion() == null ||
-                 this.cache.getLatestInstalledVersion().compareTo( this.getVersion() ) < 0 );
+        String latestInstalledVersion = this.cache.getLatestInstalledVersion();
+        String thisVersion = this.getVersion();
+        boolean needsInstall = ( latestInstalledVersion == null || latestInstalledVersion.compareTo( thisVersion ) < 0 );
+
+        // Print a log message
+        String logMessage = "MapPack [" + mapPackName + "] does ";
+        String logMessageReason;
+        if (needsInstall) {
+            logMessageReason = "null or older than ";
+        }
+        else {
+            logMessage += "not ";
+            logMessageReason = "newer than or same as ";
+        }
+        logMessageReason += "the MapPack's version [" + thisVersion + "]";
+        logMessage += "need to be installed because latest installed version [" + latestInstalledVersion + "] is " + logMessageReason;
+        Log.d(TAG, logMessage);
+
+        return needsInstall;
     }
 
     public void unpack( final OnUnpackCallback callback ) {

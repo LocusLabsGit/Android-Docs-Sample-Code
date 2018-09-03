@@ -65,10 +65,6 @@ public class LocusLabsMapPackFinder {
         return newestMapPack;
     }
 
-    public InputStream getNewestMapPack() throws Exception {
-        return getAsMapPack( this.getNewestMapPackName() );
-    }
-
     public InputStream getAsMapPack( String mapPackName ) throws Exception {
         return this.assets.open( LocusLabsCache.LOCUSLABS + File.separator + mapPackName );
     }

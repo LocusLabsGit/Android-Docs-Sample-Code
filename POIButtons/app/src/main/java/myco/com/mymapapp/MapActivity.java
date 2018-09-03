@@ -201,10 +201,24 @@ public class MapActivity extends AppCompatActivity {
             public List<ButtonDefinition> extraButtonsForPoiPopup(POI poi) {
 
                 List<ButtonDefinition> result = new ArrayList<>();
-                result.add(new ButtonDefinition("CustomButton1", "http://placehold.it/24/ff0000/ffffff"));
-                result.add(new ButtonDefinition("CustomButton2", "http://placehold.it/24/0000ff/ffffff"));
+
+                // Only add extra buttons for the Starbucks POI
+                if (poi.getId().equals("870")) {
+
+                    ButtonDefinition poiButton = new ButtonDefinition("Custom1", "http://placehold.it/24/ff0000/ffffff");
+                    result.add(poiButton);
+                }
 
                 return result;
+            }
+        });
+
+        mapView.setOnExtraButtonForPoiPopupClickedListener(new MapView.OnExtraButtonForPoiPopupClickedListener() {
+
+            @Override
+            public void onExtraButtonForPoiPopupClicked(POI poi, MapView.ExtraButtonsForPoiPopupHandler.ButtonDefinition buttonDefinition) {
+
+                Log.d("POI Button Tapped,", " ID: " +poi.getId() +" Label: " +buttonDefinition.text);
             }
         });
     }
