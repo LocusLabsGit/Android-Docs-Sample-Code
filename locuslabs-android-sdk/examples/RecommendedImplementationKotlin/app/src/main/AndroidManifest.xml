@@ -35,7 +35,9 @@
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="LocusLabs Map" >
+            android:label="LocusLabs Map"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <service android:name="com.locuslabs.sdk.ibeacon.BeaconService" />

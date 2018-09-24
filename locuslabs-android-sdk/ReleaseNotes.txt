@@ -1,3 +1,31 @@
+LocusLabs Android SDK v2.0.63 2018-09-18
+
+  - IndoorAtlas integration preview
+  - Bug fix: Should remove POI highlighting from search during navigation
+  - Bug fix: Don't prevent handling of languages that read right-to-left
+  - Bug fix: ThemeSupport example app should show custom-themed POI window
+  - Bug fix: Grab Order Food button is too high on POI window
+  - Bug fix: Show Directions button should be disabled when user clears origin or destination
+
+LocusLabs Android SDK v2.0.62 2018-09-12
+
+  - Bug fix: Show Current Location in navigation input screen only when available
+  - Bug fix: Recently Viewed section appears when tapping Show Directions button
+  - Bug fix: Nav input have the "x" in incorrect fields
+  - Bug fix: Show Directions button not enabled when origin defaulted to Current Location and destination defaulted to POI window's location
+  - Bug fix: Keyboard should not be displayed when origin defaulted to Current Location and destination defaulted to POI window's location
+  - Bug fix: Recently Viewed header missing from navigation input screen
+  - Miscellaneous exceptions resolved
+
+LocusLabs Android SDK v2.0.61 2018-09-04
+
+  - Bug fix: Bottom bar buttons must be tapped a few times before they work
+  - Improved exception handling for Grab Framework integration
+
+LocusLabs Android SDK v2.0.60 2018-08-28
+
+  - Standardized My Location button's behavior across map and navigation screen
+
 LocusLabs Android SDK v2.0.59 2018-08-21
 
   - Map buttons moved to bottom bar (migration impact for customers using themes: https://android.maps.locuslabs.com/v2.0/docs/upgrading-from-12-to-20#section-theme-migration)

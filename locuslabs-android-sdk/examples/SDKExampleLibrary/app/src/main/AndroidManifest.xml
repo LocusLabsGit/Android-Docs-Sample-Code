@@ -20,7 +20,8 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="LocusLabsSample" >
+        android:label="LocusLabsSample"
+        android:supportsRtl="true" >
         <activity
             android:name=".MainActivity"
             android:label="LocusLabs Sample Library" >
@@ -31,39 +32,57 @@
         </activity>
         <activity
             android:name=".ExampleFlightStatus"
-            android:label="Example - Flight Status API" >
+            android:label="Example - Flight Status API"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleRecenterMap"
-            android:label="Example - Recentering Map" >
+            android:label="Example - Recentering Map"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleSearchResultsOnLoad"
-            android:label="Example - Starbucks Search Results" >
+            android:label="Example - Starbucks Search Results"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleShowHideWidgets"
-            android:label="Example - Show and Hide Widgets">
+            android:label="Example - Show and Hide Widgets"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleShowNavigation"
-            android:label="Example - Show Navigation">
+            android:label="Example - Show Navigation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleShowPoiCardView"
-            android:label="Example - Show a POI Card View">
+            android:label="Example - Show a POI Card View"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleAddExtraPoiButtons"
-            android:label="Example - Add Extra POI Buttons">
+            android:label="Example - Add Extra POI Buttons"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleEnableUrls"
-            android:label="Example - Enable Opening URLs">
+            android:label="Example - Enable Opening URLs"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ExampleEnablePhoneNumbers"
-            android:label="Example - Enable Phone Calls">
+            android:label="Example - Enable Phone Calls"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <service android:name="com.locuslabs.sdk.ibeacon.BeaconService" />

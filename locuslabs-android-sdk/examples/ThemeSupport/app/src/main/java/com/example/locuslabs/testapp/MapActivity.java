@@ -204,9 +204,9 @@ public class MapActivity extends Activity {
                 // POI Carousel - Loading
                 .setProperty("view.poi.carousel.loading.color.background", Color.TRANSPARENT)
                 .setProperty("view.poi.carousel.loading.text.color.text", Color.LTGRAY)
-                .setProperty("view.poi.carousel.loading.text.color.background", Color.TRANSPARENT)
-                .setProperty("view.poi.carousel.loading.text.font.name", typeface_b)
-                .setProperty("view.poi.carousel.loading.text.font.size", 12.0)
+                .setProperty("view.poi.carousel.loading.color.background", Color.TRANSPARENT)
+                .setProperty("view.poi.carousel.loading.font.name", typeface_b)
+                .setProperty("view.poi.carousel.loading.font.size", 12.0)
                 // POI Details Description String
                 .setProperty("view.poi.detail.description.color.text",Color.WHITE)
                 .setProperty("view.poi.detail.description.color.background",Color.TRANSPARENT)
