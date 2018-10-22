@@ -1,3 +1,26 @@
+LocusLabs Android SDK v2.0.67 2018-10-17
+
+  - Features: Switch over to native Android location detection when going outdoors if using Locus Positioning Services
+  - Bug Fixes and Improvements: Prevented crash on flight status screen for all venues
+  - Bug Fixes and Improvements: Corrected invalid flight status labels on flight status screen
+  - Bug Fixes and Improvements: Added back missing Sunday operating hours on POI details screen
+  - Bug Fixes and Improvements: Corrected search results to show Locations Nearby whenever the user has selected a building
+
+LocusLabs Android SDK v2.0.66 2018-10-09
+
+  - New Features: Added new search API, searchWithTerms() that OR's search terms.  The preexisting search API,  multiTermSearch() AND's search terms
+  - Updates: Upgraded to Gradle 4.6, Android Gradle Plugin 3.2.0, and Kotlin 1.2.61
+
+LocusLabs Android SDK v2.0.65 2018-10-03
+
+  - Removed security POI field for non-airport venue types.
+  - Prevent actions on one map affecting others when multiple maps are open, such as with a preview and a full screen map instance. 
+  - Grab icon size increased on map
+
+LocusLabs Android SDK v2.0.64 2018-09-25
+
+  - Bug fix: Grab icons are super tiny
+
 LocusLabs Android SDK v2.0.63 2018-09-18
 
   - IndoorAtlas integration preview

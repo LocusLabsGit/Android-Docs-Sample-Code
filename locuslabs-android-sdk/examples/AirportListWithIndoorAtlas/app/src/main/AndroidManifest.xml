@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.locuslabs.testapp">
+
+    <!--
+        See also VenueListActivity.java for programmatic request for these permissions
+    -->
+
+    <!-- needed for downloading map data -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- needed for error handling in case network unavailable (e.g. loading POI photos) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- needed for positioning -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- needed for IndoorAtlas (see https://docs.indooratlas.com/develop/android/sdk-setup/) -->
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="AirportListWithIndoorAtlas"
+        android:theme="@style/Theme.AppCompat">
+
+        <activity
+            android:name=".MainActivity"
+            android:label="AirportListWithIndoorAtlas"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VenueListActivity"
+            android:label="Terminal List"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="Map View"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service android:name="com.locuslabs.sdk.ibeacon.BeaconService" />
+        <service android:name="com.locuslabs.sdk.ibeacon.service.IBeaconService" />
+        <service android:name="com.locuslabs.sdk.ibeacon.IBeaconIntentProcessor" />
+    </application>
+
+</manifest>

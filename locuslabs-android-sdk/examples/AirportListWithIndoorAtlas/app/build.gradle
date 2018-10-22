@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+
+def getStore = { ->
+    def result = project.hasProperty('storeFile') ? storeFile : "keystore-required"
+    return file(result)
+}
+
+def getStorePassword = { ->
+    def result = project.hasProperty('storePassword') ? storePassword : ""
+    return result
+}
+
+def getKeyAlias = { ->
+    def result = project.hasProperty('keyAlias') ? keyAlias : ""
+    return result
+}
+
+def getKeyPassword = { ->
+    def result = project.hasProperty('keyPassword') ? keyPassword : ""
+    return result
+}
+
+repositories {
+    flatDir {
+        dirs "${project.rootDir}/sdk/build/outputs/aar"
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId 'com.example.locuslabs.airportlist'
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 3
+    }
+    signingConfigs {
+        development {
+            storeFile getStore()
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+        release {
+            storeFile getStore()
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            minifyEnabled false
+            useProguard true
+            zipAlignEnabled false
+        }
+        development {
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.development
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            minifyEnabled false
+            proguardFile 'proguard-rules.pro'
+            zipAlignEnabled false
+        }
+        release {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+            renderscriptDebuggable false
+            renderscriptOptimLevel 3
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFile 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // LocusLabs SDK Dependency
+    // Also see allprojects.repositories.maven entry in project-level build.gradle
+    // to avoid error 'Failed to resolve: com.locuslabs:sdk:+'
+    implementation (group: 'com.locuslabs', name: 'sdk', version: '+') {
+        transitive = true
+    }
+
+    implementation 'org.kamranzafar:jtar:2.2'
+    implementation 'org.tukaani:xz:1.5'
+
+    // needed for IndoorAtlas (see https://docs.indooratlas.com/develop/android/sdk-setup/)
+    implementation 'com.indooratlas.android:indooratlas-android-sdk:2.8.2@aar'
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
