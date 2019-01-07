@@ -17,3 +17,5 @@
 #}
 -dontoptimize
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+-ignorewarnings

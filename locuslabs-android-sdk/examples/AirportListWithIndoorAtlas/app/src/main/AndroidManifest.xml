@@ -32,6 +32,13 @@
         android:name="android.hardware.wifi"
         android:required="true" />
 
+    <!-- Suggested for IndoorAtlas (see https://indooratlas.freshdesk.com/support/solutions/articles/36000050564-setup-positioning-sdk-with-android) -->
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.compass" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="true" />
+    <uses-feature android:name="android.hardware.wifi" android:required="true" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="AirportListWithIndoorAtlas"

@@ -8,17 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.locuslabs.sdk.configuration.LocusLabs;
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPack;
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPackFinder;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
     public static final String ACCOUNT_ID = "A11F4Y6SZRXH4X";
     private static final String VENUE_ID = "sea";
-
-    // The Map Pack is expected to be a tar.gz file.
-    // However, the name should be provided without the 'gz' extension.
-    // The file must be placed in the Android assets/locuslabs directory.
-    // IF the String MAP_PACK is null, the MapPackFinder will detect MapPacks based off the ACCOUNT_ID.
-    private static final String MAP_PACK = null; //"android-A11F4Y6SZRXH4X-2015-09-04T22-02-48.tar";
 
     @Override
     protected void onDestroy() {
@@ -49,10 +45,7 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        // If the Map Pack name is null, it will automatically search
-        // for a map pack in the assets/locuslabs directory.  The search will
-        // look for tar files that begin with "android-<ACCOUNT_ID>-<DATE>.
-        installMapPack(ACCOUNT_ID, MAP_PACK, new LocusLabsMapPack.OnUnpackCallback() {
+        LocusLabs_MapPackFinder.installMapPack(getApplicationContext(), ACCOUNT_ID, null, new LocusLabs_MapPack.OnUnpackCallback() {
             public void onUnpack(boolean didInstall, Exception exception) {
                 Log.d(TAG, String.valueOf(didInstall));
                 if (exception != null) {
@@ -60,6 +53,13 @@ public class MainActivity extends Activity {
                 }
                 //After the Map Pack is unpacked, show flight card information with a LocusLabs Map below the flight card information.
                 showFlightCard();
+            }
+        });
+
+        ProguardTestClass.proguardTestMethod("MainActivity's ProguardTestClass", new ProguardTestClass.ProguardTestInnerInterface() {
+            @Override
+            public void proguardTestCallback(String message) {
+                Log.d(TAG, "Proguard test: " + message);
             }
         });
     }
@@ -80,37 +80,4 @@ public class MainActivity extends Activity {
             }
         });
     }
-
-    private void installMapPack( String accountId, String mapPackName, LocusLabsMapPack.OnUnpackCallback callback ) {
-        LocusLabsMapPackFinder finder = LocusLabsMapPackFinder.getMapPackFinder( this.getApplicationContext(), accountId );
-        try {
-            LocusLabsCache cache = LocusLabsCache.getDefaultCache(this.getApplicationContext());
-
-            LocusLabsMapPack pack = null;
-            if ( mapPackName != null && mapPackName.length() > 0 ) {
-                Log.d("LocusLabsMapPack", "Installing Name Map Pack: " + mapPackName );
-                pack = new LocusLabsMapPack( cache, mapPackName, finder.getAsMapPack( mapPackName ) );
-            }
-            else {
-                Log.d("LocusLabsMapPack", "Looking for Map Pack: " );
-                String newestMapPackName = finder.getNewestMapPackName();
-                pack = new LocusLabsMapPack( cache, newestMapPackName, finder.getAsMapPack(newestMapPackName) );
-            }
-
-            if ( pack.needsInstall() ) {
-                Log.d("LocusLabsMapPack", "Need installation for pack: " + pack.getName());
-                pack.unpack( callback );
-            }
-            else {
-                Log.d("LocusLabsMapPack", "No installation needed for pack: " + pack.getName());
-                callback.onUnpack(true, null);
-            }
-        }
-        catch ( Exception exception ) {
-            Log.e( "LocusLabsMapPack", exception.toString() );
-            callback.onUnpack(false, exception);
-        }
-    }
-
-
 }

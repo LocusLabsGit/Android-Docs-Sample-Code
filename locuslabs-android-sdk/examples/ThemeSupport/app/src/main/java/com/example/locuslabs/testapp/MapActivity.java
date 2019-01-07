@@ -157,7 +157,6 @@ public class MapActivity extends Activity {
         Typeface typeface_b = Typeface.create(Typeface.MONOSPACE,Typeface.NORMAL);
         Typeface typeface_c = Typeface.create(Typeface.SERIF,Typeface.BOLD_ITALIC);
 
-
         Theme theme = mapView
                 .themeBuilder()
                 .setProperty("view.poi.color.background", Color.DKGRAY)
@@ -172,24 +171,28 @@ public class MapActivity extends Activity {
                 .setProperty("view.poi.header.title.color.text",Color.WHITE)
                 .setProperty("view.poi.header.title.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.header.title.font.name", typeface_a)
+                .setProperty("view.poi.header.title.font.style", typeface_a.getStyle())
                 .setProperty("view.poi.header.title.font.size", 20.0)
                 // POI Header Location
                 .setProperty("view.poi.header.location.color.text",Color.WHITE)
                 .setProperty("view.poi.header.location.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.location.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.header.location.font.name", typeface_b)
+                .setProperty("view.poi.header.location.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.header.location.font.size", 16.0)
                 // POI Header Security
                 .setProperty("view.poi.header.security.color.text",Color.WHITE)
                 .setProperty("view.poi.header.security.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.security.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.header.security.font.name", typeface_b)
+                .setProperty("view.poi.header.security.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.header.security.font.size", 16.0)
                 // POI Header Level
                 .setProperty("view.poi.header.level.color.text",Color.WHITE)
                 .setProperty("view.poi.header.level.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.level.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.header.level.font.name", typeface_b)
+                .setProperty("view.poi.header.level.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.header.level.font.size", 16.0)
                 // POI Carousel
                 .setProperty("view.poi.carousel.color.background",Color.DKGRAY)
@@ -200,17 +203,20 @@ public class MapActivity extends Activity {
                 .setProperty("view.poi.carousel.label.color.text",Color.BLACK)
                 .setProperty("view.poi.carousel.label.color.background",Color.WHITE)
                 .setProperty("view.poi.carousel.label.font.name", typeface_b)
+                .setProperty("view.poi.carousel.label.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.carousel.label.font.size", 12.0)
                 // POI Carousel - Loading
                 .setProperty("view.poi.carousel.loading.color.background", Color.TRANSPARENT)
                 .setProperty("view.poi.carousel.loading.text.color.text", Color.LTGRAY)
                 .setProperty("view.poi.carousel.loading.color.background", Color.TRANSPARENT)
                 .setProperty("view.poi.carousel.loading.font.name", typeface_b)
+                .setProperty("view.poi.carousel.loading.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.carousel.loading.font.size", 12.0)
                 // POI Details Description String
                 .setProperty("view.poi.detail.description.color.text",Color.WHITE)
                 .setProperty("view.poi.detail.description.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.detail.description.font.name", typeface_b)
+                .setProperty("view.poi.detail.description.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.detail.description.font.size", 16.0)
                 // POI Details Spannable Tag String
                 .setProperty("view.poi.detail.tag.default.color.text",Color.BLACK)
@@ -219,35 +225,42 @@ public class MapActivity extends Activity {
                 .setProperty("view.poi.contact.website.active.color.text",Color.YELLOW)
                 .setProperty("view.poi.contact.website.active.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.contact.website.active.font.name", typeface_b)
+                .setProperty("view.poi.contact.website.active.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.contact.website.active.font.size", 18.0)
                 .setProperty("view.poi.contact.website.default.color.text",Color.WHITE)
                 .setProperty("view.poi.contact.website.default.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.contact.website.default.font.name", typeface_b)
+                .setProperty("view.poi.contact.website.default.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.contact.website.default.font.size", 16.0)
                 // POI Contact - Phone
                 .setProperty("view.poi.contact.phone.active.color.text",Color.YELLOW)
                 .setProperty("view.poi.contact.phone.active.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.contact.phone.active.font.name", typeface_b)
+                .setProperty("view.poi.contact.phone.active.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.contact.phone.active.font.size", 14.0)
                 .setProperty("view.poi.contact.phone.default.color.text",Color.WHITE)
                 .setProperty("view.poi.contact.phone.default.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.contact.phone.default.font.name", typeface_b)
+                .setProperty("view.poi.contact.phone.default.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.contact.phone.default.font.size", 16.0)
                 // POI Buttons
                 .setProperty("view.poi.button.color.text",Color.WHITE)
                 .setProperty("view.poi.button.color.tint",Color.WHITE)
                 .setProperty("view.poi.button.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.button.font.name", typeface_b)
+                .setProperty("view.poi.button.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.button.font.size", 13.0)
                 // POI Operational Times - Day
                 .setProperty("view.poi.time.day.color.text",Color.WHITE)
                 .setProperty("view.poi.time.day.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.time.day.font.name", typeface_a)
+                .setProperty("view.poi.time.day.font.style", typeface_a.getStyle())
                 .setProperty("view.poi.time.day.font.size", 16.0)
                 // POI Operational Times - Hour
                 .setProperty("view.poi.time.hour.color.text",Color.LTGRAY)
                 .setProperty("view.poi.time.hour.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.time.hour.font.name", typeface_c)
+                .setProperty("view.poi.time.hour.font.style", typeface_c.getStyle())
                 .setProperty("view.poi.time.hour.font.size", 18.0)
                 // Create DefaultTheme
                 .createTheme();

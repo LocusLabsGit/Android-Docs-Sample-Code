@@ -1,3 +1,74 @@
+LocusLabs Android SDK v2.1.6 2018-12-31
+
+Bug Fixes and Improvements:
+  - Default initial building and floor to the first non-global building's default level, ignoring building's that shouldn't be displayed
+  - Allow custom theming of fonts and colors even when they share the same font/color out of the box
+  - Updated from http to https for button images in "Add Extra POI Buttons" since Android P doesn't appear to support http anymore
+
+LocusLabs Android SDK v2.1.5 2018-12-18
+
+Bug Fixes and Improvements:
+  - Exposed new API, VenueDatabase.getInstallId(), to identify the installation Identifier of the app on the device. This is the same value reported to analytics
+  - For LocusIPS, prevent the blue dot from showing too far away from the map
+  - Continue graying out map when user taps around on different POIs
+
+LocusLabs Android SDK v2.1.4 2018-12-11
+
+Bug Fixes and Improvements:
+  - Automatically select a search result during navigation input if there is only one
+  - Ensure user selects a search result during navigation input if there are multiple
+  - Prevent LocusIPS from rapidly bouncing between outdoor and indoor position near a building entrance
+  - Vertically aligned text in levels tooltip
+  - Upgraded to AndroidX dependencies
+  - Increased compileSdkVersion and targetSdkVersion to API 28
+
+LocusLabs Android SDK v2.1.3 2018-12-06
+
+Bug Fixes and Improvements:
+  - Introduced MapPacks API for pre-downloading map data (LocusLabs_MapPackFinder.installMapPack())
+  - Automatically resize an open POI window when user taps around on different POIs
+  - Corrected fading of levels tooltip when user interacts with map
+  - Corrected customizability of levels tooltip font for customer-defined themes
+
+LocusLabs Android SDK v2.1.2 2018-11-28
+
+Bug Fixes and Improvements:
+  - Level selector tooltip now hides after map interaction
+
+LocusLabs Android SDK v2.1.1 2018-11-20
+
+Bug Fixes and Improvements:
+  - Fixed a level selector bug affecting venues with lots of floors that prevented choosing the bottom-most levels
+  - Enabled custom color schemes for the level selector with the LocusLabs Theme capability
+  - Prevented an ArrayIndexOutOfBoundsException in onKey() method
+  - Fixed issue where AndroidManifest.xml permissions for LocusIPS were preventing some devices from installing the app
+
+LocusLabs Android SDK v2.1.0 2018-11-13
+
+New Features:
+  - New level selector design now allows users to view and change levels on an individual building basis
+
+LocusLabs Android SDK v2.0.70 2018-11-06
+
+Bug Fixes and Improvements:
+  - Fixed issue where map was not being grayed-out with a single search result
+  - Corrected logic for when to show the "Sorry, no matches found" message
+  - Show the user their current level whenever the map is in view
+  - Improved outdoor positioning to maintain previous known level (when using indoorAtlas) 
+
+LocusLabs Android SDK v2.0.69 2018-10-30
+
+Bug Fixes and Improvements:
+  - Upgraded to IndoorAtlas 2.9.0 BETA for improved heading handling
+
+LocusLabs Android SDK v2.0.68 2018-10-23
+
+Bug Fixes and Improvements:
+  - When a user performs a search and changes to a level with a single result, open the POI window instead of displaying results on the map
+  - Corrected bug where current location dot was not being rendered
+  - Label search results as Locations Nearby when they're located in the user's selected building
+  - Corrected bug preventing ExampleLibrary from launching
+
 LocusLabs Android SDK v2.0.67 2018-10-17
 
   - Features: Switch over to native Android location detection when going outdoors if using Locus Positioning Services

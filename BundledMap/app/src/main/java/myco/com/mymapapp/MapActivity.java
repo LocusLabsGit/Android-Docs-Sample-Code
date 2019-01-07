@@ -2,37 +2,28 @@ package myco.com.mymapapp;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.locuslabs.sdk.configuration.LocusLabs;
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPack;
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPackFinder;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
-import com.locuslabs.sdk.maps.model.Position;
 import com.locuslabs.sdk.maps.model.Venue;
 import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
-
-import myco.com.mymapapp.MapLoading.LocusLabsCache;
-import myco.com.mymapapp.MapLoading.LocusLabsMapPack;
-import myco.com.mymapapp.MapLoading.LocusLabsMapPackFinder;
 
 /**
  * Created by juankruger on 13/03/18.
  */
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends Activity {
 
     // Static
     public static final String ACCOUNT_ID =             "A11F4Y6SZRXH4X";
@@ -47,14 +38,14 @@ public class MapActivity extends AppCompatActivity {
     // *************
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         // Individual permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            ActivityCompat.requestPermissions(this,
+            requestPermissions(
                     new String[]{
                             Manifest.permission.INTERNET,
                             Manifest.permission.ACCESS_NETWORK_STATE,
@@ -67,23 +58,12 @@ public class MapActivity extends AppCompatActivity {
         // Global permissions (Android versions prior to m)
         else {
 
-            // If the Map Pack name is null, it will automatically search
-            // for a map pack in the assets/locuslabs directory.  The search will
-            // look for tar files that begin with "android-<ACCOUNT_ID>-<DATE>.
-            installMapPack(ACCOUNT_ID, null, new LocusLabsMapPack.OnUnpackCallback() {
-                public void onUnpack(String venueListContents, Exception exception) {
-
-                    if (exception != null) {Log.d("MapActivity", exception.getMessage());}
-
-                    // After the Map Pack is unpacked, load the map
-                    initializeLocusLabsDatabase();
-                }
-            });
+            installMapPacks();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
@@ -92,19 +72,9 @@ public class MapActivity extends AppCompatActivity {
             // Assume all permissions were granted (in practice you would need to check each permission)
             if (grantResults.length > 0) {
 
-                // If the Map Pack name is null, it will automatically search
-                // for a map pack in the assets/locuslabs directory.  The search will
-                // look for tar files that begin with "android-<ACCOUNT_ID>-<DATE>.
-                installMapPack(ACCOUNT_ID, null, new LocusLabsMapPack.OnUnpackCallback() {
-                    public void onUnpack(String venueListContents, Exception exception) {
-
-                        if (exception != null) {Log.d("MapActivity", exception.getMessage());}
-
-                        // After the Map Pack is unpacked, load the map
-                        initializeLocusLabsDatabase();
-                    }
-                });
+                installMapPacks();
             }
+
         }
     }
 
@@ -144,6 +114,21 @@ public class MapActivity extends AppCompatActivity {
 
                 venueDatabase = new VenueDatabase();
                 loadVenueAndMap("lax", "name of the venue you want to appear");
+            }
+        });
+    }
+
+    private void installMapPacks() {
+
+        LocusLabs_MapPackFinder.installMapPack(getApplicationContext(), ACCOUNT_ID, null, new LocusLabs_MapPack.OnUnpackCallback() {
+            public void onUnpack(boolean didInstall, Exception exception) {
+
+                Log.d("MapActivity", "Map Pack install result: " +String.valueOf(didInstall));
+                if (exception != null) {
+                    Log.e("MapActivity", exception.getMessage());
+                }
+
+                initializeLocusLabsDatabase();
             }
         });
     }
@@ -198,37 +183,5 @@ public class MapActivity extends AppCompatActivity {
 
         // The second parameter is an optional initial search term
         venueDatabase.loadVenueAndMap(venueId, null, listeners);
-    }
-
-    private void installMapPack( String accountId, String mapPackName, LocusLabsMapPack.OnUnpackCallback callback ) {
-
-        LocusLabsMapPackFinder finder = LocusLabsMapPackFinder.getMapPackFinder( this.getApplicationContext(), accountId );
-
-        try {
-            LocusLabsCache cache = LocusLabsCache.getDefaultCache(this.getApplicationContext());
-
-            LocusLabsMapPack pack = null;
-            if ( mapPackName != null && mapPackName.length() > 0 ) {
-                Log.d("LocusLabsMapPack", "Installing Name Map Pack: " + mapPackName );
-                pack = new LocusLabsMapPack( cache, mapPackName, finder.getAsMapPack( mapPackName ) );
-            }
-            else {
-                Log.d("LocusLabsMapPack", "Looking for Map Pack: " );
-                pack = new LocusLabsMapPack( cache, finder.getNewestMapPackName(), finder.getNewestMapPack() );
-            }
-
-            if ( pack.needsInstall() ) {
-                Log.d("LocusLabsMapPack", "Need installation for pack: " + pack.getName());
-                pack.unpack( callback );
-            }
-            else {
-                Log.d("LocusLabsMapPack", "No installation needed for pack: " + pack.getName());
-                callback.onUnpack(null, null);
-            }
-        }
-        catch ( Exception exception ) {
-            Log.e( "LocusLabsMapPack", exception.toString() );
-            callback.onUnpack(null, exception);
-        }
     }
 }

@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,14 +15,14 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
         maven {
             url "${sdkRoot}/maven/releases"
         }
         maven {
             // needed for IndoorAtlas (see https://docs.indooratlas.com/develop/android/sdk-setup/)
-            url "http://indooratlas-ltd.bintray.com/mvn-public"
+            url "http://indooratlas-ltd.bintray.com/mvn-public-beta"
         }
-        google()
     }
 }

@@ -30,11 +30,11 @@ android {
     lintOptions {
         abortOnError false
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId 'com.example.locuslabs.airportlist'
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
     }
     signingConfigs {
         development {
@@ -97,16 +97,15 @@ dependencies {
 
     // Grab Framework (see https://docs.poweredbygrab.com/docs/initial-setup-1)
     implementation (name: 'grab-framework-1.1.20', ext: 'aar')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation group: 'com.googlecode.libphonenumber', name: 'libphonenumber', version: '8.4.1'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     implementation 'de.hdodenhof:circleimageview:2.0.0'
     implementation 'com.android.volley:volley:1.1.0'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
-    implementation 'com.google.android.gms:play-services-location:15.0.1'
-    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     implementation 'com.wunderlist:sliding-layer:1.2.5'
     implementation 'io.card:android-sdk:5.1.1'
     implementation ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar') {

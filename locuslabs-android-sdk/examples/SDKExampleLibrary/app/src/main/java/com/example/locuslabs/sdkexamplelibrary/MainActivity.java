@@ -3,6 +3,7 @@ package com.example.locuslabs.sdkexamplelibrary;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.content.pm.ActivityInfo;
 
 import com.locuslabs.sdk.configuration.LocusLabs;
 
@@ -79,25 +79,28 @@ public class MainActivity extends Activity {
                 try {
                     list = MainActivity.this.getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES).activities;
                     activityList = new ArrayList<String>();
-                    for (int i = 1; i < list.length; i++) {
-                        activityList.add((list[i].nonLocalizedLabel).toString());
+                    for (int i = 0; i < list.length; i++) {
+                        String activityName = null != list[i].nonLocalizedLabel ? list[i].nonLocalizedLabel.toString() : null;
+                        if (null != activityName && activityName.startsWith("Example - ")) {
+                            activityList.add(activityName);
 
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                try {
-                                    Intent intent = new Intent();
-                                    intent.setClassName(getApplicationContext(), list[position + 1].name);
-                                    intent.putExtra("venueId", VENUE_ID);
-                                    startActivity(intent);
-                                }catch(NullPointerException error){
-                                    Log.e("Log",error.getMessage());
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    try {
+                                        Intent intent = new Intent();
+                                        intent.setClassName(getApplicationContext(), list[position + 1].name);
+                                        intent.putExtra("venueId", VENUE_ID);
+                                        startActivity(intent);
+                                    } catch (NullPointerException error) {
+                                        Log.e("Log", error.getMessage());
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
-                } catch(PackageManager.NameNotFoundException error){
-                    Log.i("NameNotFoundException",error.getMessage());
+                } catch (PackageManager.NameNotFoundException error) {
+                    Log.i("NameNotFoundException", error.getMessage());
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, activityList);

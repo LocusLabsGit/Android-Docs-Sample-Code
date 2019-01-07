@@ -32,11 +32,11 @@ android {
     lintOptions {
         abortOnError false
     }
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.locuslabs.recommendedimplementation"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
     }
     signingConfigs {
         development {

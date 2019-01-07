@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +26,8 @@ import com.locuslabs.sdk.maps.model.Marker;
 import com.locuslabs.sdk.maps.model.Venue;
 import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
+
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Sample Activity that will render the specified venue.
@@ -59,7 +60,7 @@ public class MapActivity extends Activity {
                 ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 
-                if (null == activeNetworkInfo || !activeNetworkInfo.isConnectedOrConnecting()) {
+                if (null == activeNetworkInfo || !activeNetworkInfo.isConnected()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
                     builder.setMessage("Lost Internet needed for IndoorAtlas").setTitle("Internet Status").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

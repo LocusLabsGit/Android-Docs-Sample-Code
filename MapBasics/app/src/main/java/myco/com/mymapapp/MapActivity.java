@@ -5,20 +5,12 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.locuslabs.sdk.configuration.LocusLabs;
-import com.locuslabs.sdk.maps.model.Airport;
-import com.locuslabs.sdk.maps.model.AirportDatabase;
-import com.locuslabs.sdk.maps.model.Building;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.LatLng;
 import com.locuslabs.sdk.maps.model.Map;
@@ -32,7 +24,7 @@ import com.locuslabs.sdk.maps.view.MapView;
  * Created by juankruger on 13/03/18.
  */
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends Activity {
 
     // Static
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
@@ -46,14 +38,14 @@ public class MapActivity extends AppCompatActivity {
     // *************
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         // Individual permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            ActivityCompat.requestPermissions(this,
+            requestPermissions(
                     new String[]{
                             Manifest.permission.INTERNET,
                             Manifest.permission.ACCESS_NETWORK_STATE,
@@ -72,7 +64,7 @@ public class MapActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
