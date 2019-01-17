@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/locuslabs_app_icon"
         android:label="LocusLabsSample"
         android:supportsRtl="true" >
         <activity

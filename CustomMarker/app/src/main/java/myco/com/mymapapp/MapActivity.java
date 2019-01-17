@@ -147,7 +147,6 @@ public class MapActivity extends Activity {
 
                 mapView = _mapView;
                 map = _map;
-                mapView.setPositioningEnabled(true);
 
                 // Inform the SDK which activity will handle certain actions like showing error messages, opening pdfs etc. from selected POIs
                 mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {

@@ -138,9 +138,6 @@ public class MapActivity extends Activity {
             public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView, Floor floor, Marker marker) {
                 mapView = _mapView;
 
-                // Calling setPositioningEnabled(true) automatically turns on IndoorAtlas,
-                // as long as the venue you're looking at has an IndoorAtlas survey
-                mapView.setPositioningEnabled(true);
 //                testIndoorAtlasDirectly();
             }
         };

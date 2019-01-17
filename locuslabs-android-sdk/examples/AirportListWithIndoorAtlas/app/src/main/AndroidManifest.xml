@@ -40,7 +40,7 @@
     <uses-feature android:name="android.hardware.wifi" android:required="true" />
 
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/locuslabs_app_icon"
         android:label="AirportListWithIndoorAtlas"
         android:theme="@style/Theme.AppCompat">
 

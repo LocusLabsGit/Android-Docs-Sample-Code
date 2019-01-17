@@ -104,9 +104,6 @@ public class MapActivity extends Activity {
 
                 mapView = _mapView;
 
-                // turn on positioning
-                mapView.setPositioningEnabled(true);
-
                 mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
                     @Override
                     public Activity onSupplyCurrentActivity() {

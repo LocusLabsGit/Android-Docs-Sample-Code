@@ -90,9 +90,6 @@ class MapActivity : Activity() {
             floor = _floor
             marker = _marker
 
-            // turn on positioning
-            mapView!!.setPositioningEnabled(true)
-
             mapView!!.setOnSupplyCurrentActivityListener { this@MapActivity }
         }
 

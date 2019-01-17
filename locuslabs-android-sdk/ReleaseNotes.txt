@@ -1,3 +1,18 @@
+LocusLabs Android SDK v2.1.9 2018-01-16
+
+Bug Fixes and Improvements:
+-MapView.setPositioningEnabled() set to true by default (To disable positioning, you must now explicitly set this value to false)
+
+LocusLabs Android SDK v2.1.8 2019-01-09
+
+Bug Fixes and Improvements:
+- Support disabling Grab Food Ordering on per-venue basis
+
+LocusLabs Android SDK v2.1.7 2019-01-03
+
+Bug Fixes and Improvements:
+  - API updated to include beacon information on venue object accessible from VenueDatabase.OnLoadCompletedListener()
+
 LocusLabs Android SDK v2.1.6 2018-12-31
 
 Bug Fixes and Improvements:

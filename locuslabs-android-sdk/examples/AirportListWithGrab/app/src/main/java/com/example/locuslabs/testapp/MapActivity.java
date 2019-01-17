@@ -96,7 +96,6 @@ public class MapActivity extends Activity {
                         return MapActivity.this;
                     }
                 });
-                mapView.setPositioningEnabled(true);
             }
         };
 

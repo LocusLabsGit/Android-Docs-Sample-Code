@@ -144,7 +144,6 @@ public class MapActivity extends Activity {
             public void onLoadCompleted(Venue venue, Map map, MapView _mapView, Floor floor, Marker marker) {
 
                 mapView = _mapView;
-                mapView.setPositioningEnabled(true);
 
                 // Inform the SDK which activity will handle certain actions like showing error messages, opening pdfs etc. from selected POIs
                 mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
