@@ -181,7 +181,7 @@ public class MapActivity extends Activity {
 
     private void positionAndZoomMap() {
 
-        // Set the center of the map to Terminal 6 and zoom in. You can find lat/lng etc. either by logging into your VMS, or setting the mapview's "OnClickAtPositionListener"
+        // Set the center of the map to Terminal 6 and zoom in. You can find lat/lng etc. by setting the mapview's "OnClickAtPositionListener"
         LatLng newLatlng = new LatLng(33.941384, -118.402057);
         Position newMapCenter = new Position(null, null, null, null, null, null, newLatlng, 0.0, 0.0);
         mapView.setCenterPosition(newMapCenter);
