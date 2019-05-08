@@ -96,10 +96,18 @@ public class ExampleEnableUrls extends Activity {
             @Override public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView,
                                                   Floor floor, Marker marker) {
                 mapView = _mapView;
+
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleEnableUrls.this;
+                    }
+                });
+
                 // Set the MapView's OnPoiUrlClickedListener before showing the POI
                 setupUrlClickedListener();
-                // Renders the POI Card View for a POI with a Id of 141.
-                mapView.showPoiPopup("141");
+                // Renders the POI Card View for a POI with a particular poiID.
+                mapView.showPoiPopup("15"); // Starbucks "Satellite N - Gate N9" on level "Level 5 - Concourse (Main Terminal)"
             }
         };
 

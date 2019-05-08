@@ -1,4 +1,90 @@
-LocusLabs Android SDK v2.1.9 2018-01-16
+LocusLabs Android SDK v2.1.22 2019-05-02
+
+Bug Fixes and Improvements:
+- Show security checkpoint wait time in navigation (in step-by-step guidance, route summary)
+- Show "CLOSED" if security checkpoint is temporarily unavailable (in step-by-step guidance, route summary)
+- Changed "Take Security Checkpoint (...) to" to "Pass through Security Checkpoint to" (i18n pending)
+
+LocusLabs Android SDK v2.1.21 2019-04-26
+
+Bug Fixes and Improvements:
+- Upgraded Gradle to 5.1.1 and Android Plugin for Gradle to 3.4.0
+- Updated various other dependencies
+
+LocusLabs Android SDK v2.1.20 2019-04-02
+
+New Features:
+- Dynamic security wait-time routing
+
+LocusLabs Android SDK v2.1.19 2019-03-28
+
+Bug Fixes and Improvements:
+- Fixed bug where the directions button sometimes didn't appear in POI windows
+- Deprecated Venue.registerOnPositionChangedListener() in favor of UserPositionManager.registerOnPositionChangedListener() (for more information see https://android.maps.locuslabs.com/v2.0/docs/upgrading-to-21#section-registeronpositionchangedlistener)
+- Added translations for bus and shuttle navigation paths
+- Updated Android SDK minimum API from 21 to 23
+
+LocusLabs Android SDK v2.1.18 2019-03-20
+
+Bug Fixes and Improvements:
+- Fixed bug where closing a POI window via swipe did not handle highlighting and greying out of the map properly
+
+LocusLabs Android SDK v2.1.17 2019-03-12
+
+Bug Fixes and Improvements:
+- Fixed bug where navigation lines showed two icons for security checkpoints
+- Bus and train navigation segments now show not only the number of stops but also the trip's duration (pending i18n translations)
+
+LocusLabs Android SDK v2.1.16 2019-03-07
+
+Bug Fixes and Improvements:
+- Fixed bug where POI window did not resize properly when user tapped a new POI that included photos
+- Fixed bug where Follow-me-mode did not get enabled during navigation when startInFollowMeMode=false
+
+LocusLabs Android SDK v2.1.15 2019-02-28
+
+Bug Fixes and Improvements:
+- Point POI icons now hide and resize at various zoom levels
+
+LocusLabs Android SDK v2.1.14 2019-02-20
+
+Bug Fixes and Improvements:
+- Fixed pan/zoom animation for navigation that begins on a new floor
+- Improved error handling
+
+LocusLabs Android SDK v2.1.13 2019-02-13
+
+Bug Fixes and Improvements:
+- One-finger tap and drag to zoom
+- Restored custom click handling by fixing broken API call MapView.setOnClickAtPositionListener()
+- Show Install ID and current session ID when user types "about:" into search bar
+
+LocusLabs Android SDK v2.1.12 2019-02-07
+
+Bug Fixes and Improvements:
+- Corrected the level shown on the first step of a navigation
+- When user taps a building in the level selector, center the building's default level in the visible area of the map above the level selector
+- Show POI window directly when there is only one search result on the current level
+
+LocusLabs Android SDK v2.1.11 2019-01-31
+
+Bug Fixes and Improvements:
+- Hide more-results tooltip when results are all on the current level
+- On a Grab enabled map, hide the Grab icons on the map after the user performs a search or a navigation
+- New API to disable re-centering the map to the user current location: MapView.setShouldUpdateMapViewOnUserPositionChange(boolean shouldUpdateMapViewOnUserPositionChange).  This API corresponds to LocusMaps iOS SDK's "startInFollowMeMode" flag on LLMapView.
+
+LocusLabs Android SDK v2.1.10 2019-01-23
+
+Bug Fixes and Improvements:
+- Update currently selected building based on map pan/zoom
+- Initialize to a global view of the map
+- Renamed Locations Nearby -> Suggested Locations for English
+- Incorporated new app icon to match email blast branding
+- Hide building/levels toast after displaying for 5 seconds
+- Changed from centering on the building bounds to centering on the floor's bounds
+- Upgraded from Gradle 4.6 to 4.10.1 and Gradle Plugin from 3.2.1 to 3.3.0 per Google's recommendation
+
+LocusLabs Android SDK v2.1.9 2019-01-16
 
 Bug Fixes and Improvements:
 -MapView.setPositioningEnabled() set to true by default (To disable positioning, you must now explicitly set this value to false)

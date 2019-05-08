@@ -35,7 +35,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.locuslabs.recommendedimplementation"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
     }
     signingConfigs {

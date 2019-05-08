@@ -101,6 +101,14 @@ public class ExampleRecenterMap extends Activity {
             @Override public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView,
                                                   Floor floor, Marker marker) {
                 mapView = _mapView;
+
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleRecenterMap.this;
+                    }
+                });
+
                 venue = _venue;
                 startResettingMapPeriodically();
             }

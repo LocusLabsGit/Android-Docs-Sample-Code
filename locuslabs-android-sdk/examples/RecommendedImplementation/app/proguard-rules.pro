@@ -1,19 +1,10 @@
 # Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /Applications/android-sdk-macosx/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
-# Add any project specific keep options here:
-
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
-
 -ignorewarnings
+
+# Specifies to write out the entire configuration that has been parsed to the file app/build/proguard-merged-config.txt.
+# It includes LocusMaps Android SDK's own locuslabs-proguard-rules.pro which were exposed via the Gradle property consumerProguardFiles
+# For more information see https://android.maps.locuslabs.com/v2.0/docs/frequently-asked-questions#section-what-exceptions-does-locusmaps-android-sdk-require-for-proguard-
+-printconfiguration build/proguard-merged-config.txt

@@ -99,6 +99,14 @@ public class ExampleShowNavigation extends Activity {
                                                   Floor floor, Marker marker) {
                 venue = _venue;
                 mapView = _mapView;
+
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleShowNavigation.this;
+                    }
+                });
+
                 showNavigation();
             }
         };
@@ -110,9 +118,11 @@ public class ExampleShowNavigation extends Activity {
     private void showNavigation() {
         final POIDatabase poiDatabase = venue.poiDatabase();
 
+        // POI ID 15: Starbucks (Satellite N - Gate N9)
         poiDatabase.loadPOI("15", new POIDatabase.OnLoadPoiListener() {
             @Override
             public void onLoadPoi(final POI startPOI) {
+                // POI ID 126: Mountain Room Bar
                 poiDatabase.loadPOI("126", new POIDatabase.OnLoadPoiListener() {
                     @Override
                     public void onLoadPoi(final POI endPOI) {

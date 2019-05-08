@@ -93,7 +93,15 @@ public class ExampleShowPoiCardView extends Activity {
             @Override public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView,
                                                   Floor floor, Marker marker) {
                 mapView = _mapView;
-                showPoiPopups("2");
+
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleShowPoiCardView.this;
+                    }
+                });
+
+                showPoiPopups("15");
             }
         };
 

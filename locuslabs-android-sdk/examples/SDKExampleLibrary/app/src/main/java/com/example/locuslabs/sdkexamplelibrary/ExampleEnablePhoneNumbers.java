@@ -95,6 +95,14 @@ public class ExampleEnablePhoneNumbers extends Activity {
             @Override public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView,
                                                   Floor floor, Marker marker) {
                 mapView = _mapView;
+
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleEnablePhoneNumbers.this;
+                    }
+                });
+
                 //Set the MapView's OnPoiPhoneClickedListener before showing the POI
                 setupPhoneNumberClickedListener();
                 // Renders the POI Card View for a POI with the given ID.

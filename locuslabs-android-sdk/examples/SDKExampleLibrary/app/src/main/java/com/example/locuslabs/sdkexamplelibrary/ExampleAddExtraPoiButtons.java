@@ -102,6 +102,13 @@ public class ExampleAddExtraPoiButtons extends Activity {
                                                   Floor floor, Marker marker) {
                 mapView = _mapView;
 
+                mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
+                    @Override
+                    public Activity onSupplyCurrentActivity() {
+                        return ExampleAddExtraPoiButtons.this;
+                    }
+                });
+
                 // Note: ExtraButtons can be added to POI Views before the MapView is ready.
                 setupExtraButtons(mapView);
 
@@ -114,8 +121,6 @@ public class ExampleAddExtraPoiButtons extends Activity {
                         mapView.showPoiPopup("126");
                     }
                 });
-
-
             }
         };
 

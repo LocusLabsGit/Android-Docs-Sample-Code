@@ -189,6 +189,9 @@ public class MapActivity extends Activity {
                             positions.add(newPosition);
                         }
 
+                        //AndroidUtils utils = new AndroidUtils(((DefaultVenue) mVenue).getJavaScriptEnvironment());
+                        //utils.simulateWalking(mMapView, positionsTapped, shouldUpdateMapViewOnUserPositionChange);
+
                         final JavaScriptEnvironment jsEnv = ((DefaultVenue)_venue).getJavaScriptEnvironment();
                         jsEnv.registerOnReadyListener(new JavaScriptEnvironment.OnReadyListener() {
                             @Override

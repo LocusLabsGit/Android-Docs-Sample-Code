@@ -10,6 +10,8 @@ package com.example.locuslabs.recommendedimplementation;
  * Then the line starting "com.example.locuslabs.recommendedimplementation.ProguardTestClass ->" should say this class was renamed, for example to "com.example.locuslabs.recommendedimplementation.a"
  *   And the file should not say "com.example.locuslabs.recommendedimplementation.ProguardTestClass -> com.example.locuslabs.recommendedimplementation.ProguardTestClass"
  *
+ * For more information see https://android.maps.locuslabs.com/v2.0/docs/frequently-asked-questions#section-what-exceptions-does-locusmaps-android-sdk-require-for-proguard-
+ *
  * LocusLabs internal source: https://app.asana.com/0/16049761259391/812529377090330/f
  */
 public class ProguardTestClass {
