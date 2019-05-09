@@ -189,18 +189,8 @@ public class MapActivity extends Activity {
                             positions.add(newPosition);
                         }
 
-                        //AndroidUtils utils = new AndroidUtils(((DefaultVenue) mVenue).getJavaScriptEnvironment());
-                        //utils.simulateWalking(mMapView, positionsTapped, shouldUpdateMapViewOnUserPositionChange);
-
-                        final JavaScriptEnvironment jsEnv = ((DefaultVenue)_venue).getJavaScriptEnvironment();
-                        jsEnv.registerOnReadyListener(new JavaScriptEnvironment.OnReadyListener() {
-                            @Override
-                            public void onReady() {
-
-                                JavaScriptProxyObject javaScriptProxyObject = new JavaScriptProxyObject(jsEnv, this, "locuslabs.maps.AndroidUtils");
-                                javaScriptProxyObject.callJavaScriptMethod("simulate", "uuid:" + mapView.getUuid(), positions);
-                            }
-                        });
+                        AndroidUtils utils = new AndroidUtils(((DefaultVenue) _venue).getJavaScriptEnvironment());
+                        utils.simulateWalking(mapView, positions, true);
                     }
                 });
             }
