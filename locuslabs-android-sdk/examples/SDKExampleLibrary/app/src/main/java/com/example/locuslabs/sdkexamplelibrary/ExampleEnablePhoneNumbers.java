@@ -106,7 +106,8 @@ public class ExampleEnablePhoneNumbers extends Activity {
                 //Set the MapView's OnPoiPhoneClickedListener before showing the POI
                 setupPhoneNumberClickedListener();
                 // Renders the POI Card View for a POI with the given ID.
-                mapView.showPoiPopup("44"); // Alaska Airlines Lounge ("terminal": "Concourse D", "gate": "Gate D1")
+                String poi_id_alaskaAirlinesLoungeAtGateD1AtSEA = "44";
+                mapView.showPoiPopup(poi_id_alaskaAirlinesLoungeAtGateD1AtSEA);
             }
         };
 

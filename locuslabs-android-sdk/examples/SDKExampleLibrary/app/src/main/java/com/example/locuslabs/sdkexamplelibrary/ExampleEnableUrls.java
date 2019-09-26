@@ -107,7 +107,8 @@ public class ExampleEnableUrls extends Activity {
                 // Set the MapView's OnPoiUrlClickedListener before showing the POI
                 setupUrlClickedListener();
                 // Renders the POI Card View for a POI with a particular poiID.
-                mapView.showPoiPopup("15"); // Starbucks "Satellite N - Gate N9" on level "Level 5 - Concourse (Main Terminal)"
+                String poi_id_deltaSkyClubAtGateA1AtSEA = "623";
+                mapView.showPoiPopup(poi_id_deltaSkyClubAtGateA1AtSEA);
             }
         };
 

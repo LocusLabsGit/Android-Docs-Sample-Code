@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
                 Configuration.shared.setGrabCustomerId(GRAB_CUSTOMER_CODE);
 
                 // Set a custom GrabStyle (optional)
-                //Configuration.shared.setGrabStyles(getCustomGrabStyles());
+                Configuration.shared.setGrabStyles(getCustomGrabStyles());
 
                 Intent intent = new Intent(getApplicationContext(), VenueListActivity.class);
                 startActivity(intent);

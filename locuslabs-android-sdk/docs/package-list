@@ -10,9 +10,8 @@ com.locuslabs.sdk.internal.maps.controller.api
 com.locuslabs.sdk.internal.maps.holder
 com.locuslabs.sdk.internal.maps.model
 com.locuslabs.sdk.internal.maps.model.notification
-com.locuslabs.sdk.internal.maps.model.pojo
+com.locuslabs.sdk.internal.maps.model.searchresult
 com.locuslabs.sdk.internal.maps.view
-com.locuslabs.sdk.internal.maps.view.poi
 com.locuslabs.sdk.internal.widget
 com.locuslabs.sdk.internal.widget.poi
 com.locuslabs.sdk.javascriptintegration

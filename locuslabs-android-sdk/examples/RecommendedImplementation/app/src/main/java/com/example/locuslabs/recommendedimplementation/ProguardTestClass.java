@@ -15,11 +15,13 @@ package com.example.locuslabs.recommendedimplementation;
  * LocusLabs internal source: https://app.asana.com/0/16049761259391/812529377090330/f
  */
 public class ProguardTestClass {
-    public interface ProguardTestInnerInterface {
-        void proguardTestCallback(String message);
+    private int avar;
+
+    public ProguardTestClass(int avar) {
+        this.avar = avar;
     }
 
-    public static void proguardTestMethod(String input, ProguardTestInnerInterface impl) {
-        impl.proguardTestCallback("proguardTestMethod received input=[" + input + "]");
+    public int incrementValue() {
+        return ++avar;
     }
 }

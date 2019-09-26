@@ -93,19 +93,19 @@ dependencies {
         transitive = true
     }
 
-    implementation 'org.tukaani:xz:1.5'
+    implementation 'org.tukaani:xz:1.8'
 
     // Grab Framework (see https://docs.poweredbygrab.com/docs/initial-setup-1)
-    implementation (name: 'grab-framework-1.1.20', ext: 'aar')
+    implementation (name: 'grab-framework-1.1.28', ext: 'aar')
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation group: 'com.googlecode.libphonenumber', name: 'libphonenumber', version: '8.4.1'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     implementation 'de.hdodenhof:circleimageview:2.0.0'
     implementation 'com.android.volley:volley:1.1.0'
-    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
-    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.1.0'
     implementation 'com.wunderlist:sliding-layer:1.2.5'
     implementation 'io.card:android-sdk:5.1.1'
     implementation ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar') {

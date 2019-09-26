@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -15,6 +16,8 @@ import com.locuslabs.sdk.maps.model.Circle;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
+import com.locuslabs.sdk.maps.model.POI;
+import com.locuslabs.sdk.maps.model.POIDatabase;
 import com.locuslabs.sdk.maps.model.Position;
 import com.locuslabs.sdk.maps.model.Search;
 import com.locuslabs.sdk.maps.model.SearchResult;
@@ -167,7 +170,7 @@ public class MapActivity extends Activity {
                     @Override
                     public void onReady() {
 
-                        performGeneralSearch("Food");
+                        performGeneralSearch("restaurant");
                     }
                 });
             }
@@ -189,12 +192,26 @@ public class MapActivity extends Activity {
 
         Search search = venue.search();
 
+        final POIDatabase poiDatabase = venue.poiDatabase();
+
         Search.OnSearchResultsListener searchResultsListener = new Search.OnSearchResultsListener() {
 
             @Override
             public void onSearchResults(SearchResults searchResults, String s) {
 
                 drawSearchResultsOnMap(searchResults);
+
+                // Get the POI details for each result
+                for (SearchResult searchResult: searchResults.getResults()) {
+
+                    poiDatabase.loadPOI(searchResult.getPoiId(), new POIDatabase.OnLoadPoiListener() {
+                        @Override
+                        public void onLoadPoi(POI poi) {
+
+                            Log.d("POI Loaded", "Name:" +poi.getName());
+                        }
+                    });
+                }
             }
         };
 

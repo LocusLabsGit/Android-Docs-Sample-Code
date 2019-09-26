@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
     public static final String ACCOUNT_ID = "A11F4Y6SZRXH4X";
     private static final String VENUE_ID = "sea";
+    private ProguardTestClass proguardTestClass;
 
     @Override
     protected void onDestroy() {
@@ -56,12 +57,8 @@ public class MainActivity extends Activity {
             }
         });
 
-        ProguardTestClass.proguardTestMethod("MainActivity's ProguardTestClass", new ProguardTestClass.ProguardTestInnerInterface() {
-            @Override
-            public void proguardTestCallback(String message) {
-                Log.d(TAG, "Proguard test: " + message);
-            }
-        });
+        proguardTestClass = new ProguardTestClass(3);
+        Log.d(TAG, "Proguard test: " + proguardTestClass.incrementValue());
     }
 
     protected void onResume() {

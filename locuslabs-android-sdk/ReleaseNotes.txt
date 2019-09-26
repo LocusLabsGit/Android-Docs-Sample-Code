@@ -1,3 +1,130 @@
+LocusLabs Android SDK v2.2.5 2019-08-09
+
+Bug Fixes and Improvements:
+- Updated POI badge icons on map
+- Changed max zoom for non-airport spaces
+- Fixed bug where Grab markers were hidden after canceling navigation
+- Upgraded Glide from 4.7.1 to 4.9.0
+
+LocusLabs Android SDK v2.2.4 2019-08-05
+
+Bug Fixes and Improvements:
+- Updated POI centering and offset for smaller scale non-airport venues
+- Added "-keep class com.facebook.soloader.** { *; }" to Proguard rules  
+- Fixed a bug where the map continually zoomed in and out when in follow-me-mode during navigation
+- Fixed a bug where the "From" field got cleared on the directions summary screen whenever Current Location updated
+- Updated to turn off Follow-me-Mode during navigation when user presses Next to view instructions ahead of their Current Location 
+- Fixes bug where tapping on route guidance header would toggle between current step and summary
+- Updated POI badges
+
+LocusLabs Android SDK v2.2.3 2019-07-29
+
+Bug Fixes and Improvements:
+- Set the default security lane to General Security
+- Restored the API MapView.hideAllWidgets()'s ability to hide the bottom bar
+- Fixed clearing search so it unhides Grab markers
+- Clear search field after canceling navigation
+- Fixed bug in navigation so given a Current Location when the user taps Directions from the POI window it shows Directions Summary rather than bypassing it
+- Fixed bugs in navigation animation
+- Fixed programmatic navigation to ensure it shows not only the route but also the Route Guidance Header and Route Summary Bar
+- Fixed showing ellipses for long POIs in From/To on Directions Summary screen
+- Removed flickering from navigation line on Directions Summary screen when navigating from a moving Current Location
+- Fixed level tooltip to display for 5 seconds
+- Fixed showing ellipses for long route steps on Directions Summary and Route Guidance screens
+- Updated to crisper down-chevron icon
+- Made it so tapping anywhere on the From/To field on Directions Summary takes user back to Navigation Input
+- Sped up handling of back button from route guidance to directions summary
+-Changed navigation input to advance automatically to directions summary except when user returns to navigation input by tapping the back button
+
+LocusLabs Android SDK v2.2.2 2019-07-18
+
+Bug Fixes and Improvements:
+- Introduced accessible routing to navigation APIs (see https://dash.readme.io/project/locusmaps-android/v2.0/docs/upgrading-to-22)
+- Fixed bug where search bar appeared over Route Summary Bar after closing POI window during navigation
+- Handled special case of navigating from an origin that's not Current Location
+
+LocusLabs Android SDK v2.2.1 2019-07-13
+
+Bug Fixes and Improvements:
+- Fixed back button handling
+
+LocusLabs Android SDK v2.2.0 2019-07-08
+
+Bug Fixes and Improvements:
+- Reduced memory usage by removing some unnecessary JSON parsing, and saving data directly to disk.
+- Prevented freezing on navigation input by tuning debouncing
+- Fixed navigation view to center based on Current Location
+- Fixed bug in clearing destination field when user taps it even after no route found
+- Deprecated category: and airline: query prefixes
+- Centered CLOSED in its bubble on POI window
+
+LocusLabs Android SDK v2.1.30 2019-06-30
+
+New Features:
+- Added wheelchair accessible option for navigation
+Bug Fixes and Improvements:
+- Updated Dutch translation for ll_common_bottom_directions
+- Prevented Android 9 crash pertaining to WebView
+- Added "-keep class com.facebook.yoga.** { *; }" to Proguard rules
+
+LocusLabs Android SDK v2.1.29 2019-06-19
+
+Bug Fixes and Improvements:
+- Further design updates to navigation
+- Updated Russian translations for security check point navigation routes
+
+LocusLabs Android SDK v2.1.28 2019-06-12
+
+Bug Fixes and Improvements:
+- Further design updates to navigation
+- When user taps on a popular search such as "lounge", automatically fill the search field with the word "lounge"
+- Changed Mobile POI Checkin to rely primarily on LocusLabs Positioning and secondarily on Android's native positioning
+- Fixed My Location that was appearing above POI window
+- Corrected i18n translations for escalators and elevators
+
+LocusLabs Android SDK v2.1.27 2019-06-07
+
+Bug Fixes and Improvements:
+- Prevent Follow-me-Mode during navigation when origin is not Current Location
+- Prevent NullPointerException when calling TextView.removeTextChangedListener()
+- i18n: Updated navigation translations for locales es and es-419
+- Preview of updated design for navigation
+
+LocusLabs Android SDK v2.1.26 2019-05-29
+
+Bug Fixes and Improvements:
+- Round instead of truncate navigation time estimates
+- Added route directions for escalators
+- Fixed bug where search ignored the last character of a query if the user typed too fast
+- Hide keyboard on navigation input when origin and destination are pre-populated
+
+LocusLabs Android SDK v2.1.25 2019-05-23
+
+Bug Fixes and Improvements:
+- Fixed layout of CLOSED and "+6 min" bubbles
+- Make "Other Security Lanes" scrollable on Checkpoints POI
+- Fixed i18n of Spanish for navigation segments
+
+LocusLabs Android SDK v2.1.24 2019-05-15
+
+Bug Fixes and Improvements:
+- Fixed bug where navigation input screen could crash if origin and destination were populated by default values
+- Fixed bug on navigation screen where it said "Route to null" instead of the destination's name
+- Corrected Spanish translation for Directions button
+- Added translations for "Pass through security to" navigation instruction
+
+Updates:
+- Updated example app, AirportListWithGrab, to Grab Framework 1.1.28 (for instructions how to upgrade your app see 
+https://android.maps.locuslabs.com/docs/grab-food-ordering)
+- Upgraded to Android Plugin for Gradle 3.4.0 & Gradle 5.1.1 across all example apps
+- Changed ProguardTestClass to adapt to Android Plugin for Gradle 3.4.0's new obfuscation mechanism, R8, a replacement for Proguard
+
+LocusLabs Android SDK v2.1.23 2019-05-10
+
+Bug Fixes and Improvements:
+- Display dynamic security wait times in security checkpoint POI windows
+- Fixed crash that resulted from a tap on security checkpoint POIs
+
 LocusLabs Android SDK v2.1.22 2019-05-02
 
 Bug Fixes and Improvements:

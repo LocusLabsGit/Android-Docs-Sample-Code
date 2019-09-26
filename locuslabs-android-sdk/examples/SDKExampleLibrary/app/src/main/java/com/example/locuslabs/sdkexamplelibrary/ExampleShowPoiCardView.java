@@ -101,7 +101,8 @@ public class ExampleShowPoiCardView extends Activity {
                     }
                 });
 
-                showPoiPopups("15");
+                final String targetPOIIdGateA10 = "363";
+                showPoiPopups(targetPOIIdGateA10);
             }
         };
 

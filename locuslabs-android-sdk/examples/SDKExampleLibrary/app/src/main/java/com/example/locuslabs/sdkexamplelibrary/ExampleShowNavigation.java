@@ -118,12 +118,13 @@ public class ExampleShowNavigation extends Activity {
     private void showNavigation() {
         final POIDatabase poiDatabase = venue.poiDatabase();
 
-        // POI ID 15: Starbucks (Satellite N - Gate N9)
-        poiDatabase.loadPOI("15", new POIDatabase.OnLoadPoiListener() {
+        final String startPOIIdGateA10 = "363";
+        final String endPOIIdGateD10 = "50";
+
+        poiDatabase.loadPOI(startPOIIdGateA10, new POIDatabase.OnLoadPoiListener() {
             @Override
             public void onLoadPoi(final POI startPOI) {
-                // POI ID 126: Mountain Room Bar
-                poiDatabase.loadPOI("126", new POIDatabase.OnLoadPoiListener() {
+                poiDatabase.loadPOI(endPOIIdGateD10, new POIDatabase.OnLoadPoiListener() {
                     @Override
                     public void onLoadPoi(final POI endPOI) {
 
@@ -141,7 +142,7 @@ public class ExampleShowNavigation extends Activity {
                         //Create the Position endPosition, so it can be called from MapView > showNavigation
                         .createPosition();
 
-                        mapView.showNavigation(startPosition,endPosition);
+                        mapView.showNavigationDirect(startPosition,endPosition);
                     }
                 });
             }
