@@ -36,6 +36,7 @@ public class MapActivity extends Activity {
     private VenueDatabase               venueDatabase;
     private MapView                     mapView;
     private PositioningSensorAlgorithm  positioningSensorAlgorithm;
+    private Venue                       venue;
 
     // *************
     // LIFECYCLE
@@ -110,6 +111,11 @@ public class MapActivity extends Activity {
     // CUSTOM METHODS
     // *************
 
+    private void hideBlueDot() {
+
+        venue.clearPosition();
+    }
+
     private void initializeLocusLabsDatabase() {
 
         LocusLabs.registerOnReadyListener(new LocusLabs.OnReadyListener() {
@@ -146,9 +152,10 @@ public class MapActivity extends Activity {
 
         listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
             @Override
-            public void onLoadCompleted(final Venue venue, Map map, MapView _mapView, Floor floor, Marker marker) {
+            public void onLoadCompleted(final Venue _venue, Map map, MapView _mapView, Floor floor, Marker marker) {
 
                 mapView = _mapView;
+                venue = _venue;
 
                 // Inform the SDK which activity will handle certain actions like showing error messages, opening pdfs etc. from selected POIs
                 mapView.setOnSupplyCurrentActivityListener(new MapView.OnSupplyCurrentActivityListener() {
