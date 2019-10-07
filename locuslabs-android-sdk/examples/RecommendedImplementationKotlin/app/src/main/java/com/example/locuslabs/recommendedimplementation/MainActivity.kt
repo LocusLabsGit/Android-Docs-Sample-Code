@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.util.Log
 
 import com.locuslabs.sdk.configuration.LocusLabs
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPack
+import com.locuslabs.sdk.mappacks.LocusLabs_MapPackFinder
 
 class MainActivity : Activity() {
 
@@ -39,7 +41,7 @@ class MainActivity : Activity() {
         // If the Map Pack name is null, it will automatically search
         // for a map pack in the assets/locuslabs directory.  The search will
         // look for tar files that begin with "android-<ACCOUNT_ID>-<DATE>.
-        val onUnpackCallback = object: LocusLabsMapPack.OnUnpackCallback {
+        val onUnpackCallback = object: LocusLabs_MapPack.OnUnpackCallback {
             override fun onUnpack(didInstall: Boolean, exception: Exception?) {
                 Log.d(TAG, didInstall.toString())
                 if (exception != null) {
@@ -49,7 +51,7 @@ class MainActivity : Activity() {
                 showFlightCard()
             }
         }
-        installMapPack(ACCOUNT_ID, MAP_PACK, onUnpackCallback )
+        installMapPack(ACCOUNT_ID, MAP_PACK, onUnpackCallback)
 
     }
 
@@ -64,39 +66,8 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun installMapPack(accountId: String, mapPackName: String?, callback: LocusLabsMapPack.OnUnpackCallback) {
-        val finder = LocusLabsMapPackFinder.getMapPackFinder(this.applicationContext, accountId)
-        try {
-            val cache = LocusLabsCache.getDefaultCache(this.applicationContext)
-
-            var pack: LocusLabsMapPack? = null
-            if (mapPackName != null && mapPackName.length > 0) {
-                Log.d("LocusLabsMapPack", "Installing Name Map Pack: $mapPackName")
-                pack = LocusLabsMapPack(cache, mapPackName, finder.getAsMapPack(mapPackName))
-            } else {
-                Log.d("LocusLabsMapPack", "Looking for Map Pack: ")
-                val newestMapPackName = finder.newestMapPackName
-                if (null != newestMapPackName) {
-                    pack = LocusLabsMapPack(cache, newestMapPackName, finder.newestMapPack)
-                }
-            }
-
-            if (null != pack) {
-                if (pack.needsInstall()) {
-                    Log.d("LocusLabsMapPack", "Need installation for pack: " + pack.name)
-                    pack.unpack(callback)
-                } else {
-                    Log.d("LocusLabsMapPack", "No installation needed for pack: " + pack.name)
-                    callback.onUnpack(true, null)
-                }
-            } else {
-                Log.e("LocusLabsMapPack", "Could not instantiate a LocusLabsMapPack")
-            }
-        } catch (exception: Exception) {
-            Log.e("LocusLabsMapPack", exception.toString())
-            callback.onUnpack(false, exception)
-        }
-
+    private fun installMapPack(accountId: String, mapPackName: String?, callback: LocusLabs_MapPack.OnUnpackCallback) {
+        LocusLabs_MapPackFinder.installMapPack(applicationContext, accountId, null, callback)
     }
 
     companion object {

@@ -36,7 +36,6 @@ public class MapActivity extends Activity {
     // Var
     private VenueDatabase   venueDatabase;
     private MapView         mapView;
-    private PositioningSensorAlgorithm  positioningSensorAlgorithm;
 
     // *************
     // LIFECYCLE

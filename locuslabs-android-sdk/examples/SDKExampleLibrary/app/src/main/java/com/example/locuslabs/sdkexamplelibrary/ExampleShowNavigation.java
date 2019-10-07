@@ -142,7 +142,7 @@ public class ExampleShowNavigation extends Activity {
                         //Create the Position endPosition, so it can be called from MapView > showNavigation
                         .createPosition();
 
-                        mapView.showNavigationDirect(startPosition,endPosition);
+                        mapView.showNavigationAccessible(startPosition,endPosition);
                     }
                 });
             }

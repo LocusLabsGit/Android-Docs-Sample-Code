@@ -91,6 +91,8 @@ class MapFragment : Fragment() {
             view.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
             (getView() as ViewGroup).addView(view)
             venueDatabase!!.resumeLoadVenueAndMap()
+
+            setupButton(getView() as ViewGroup, venueId)
         }
         listeners.loadCompletedListener = VenueDatabase.OnLoadCompletedListener { _venue, _map, _mapView, _floor, _marker ->
             venue = _venue
@@ -100,12 +102,6 @@ class MapFragment : Fragment() {
             marker = _marker
 
             mapView!!.hideAllWidgets()
-
-            val viewGroup = view as ViewGroup
-            viewGroup.removeAllViews()
-            viewGroup.addView(mapView)
-
-            setupButton(viewGroup, venueId)
         }
 
         listeners.loadProgressListener = VenueDatabase.OnLoadProgressListener { percentComplete ->

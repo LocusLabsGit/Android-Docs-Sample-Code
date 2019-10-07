@@ -97,6 +97,8 @@ public class MapFragment extends Fragment {
                 view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
                 ((ViewGroup) getView()).addView(view);
                 venueDatabase.resumeLoadVenueAndMap();
+
+                setupButton((ViewGroup) getView(), venueId);
             }
         };
         listeners.loadCompletedListener = new VenueDatabase.OnLoadCompletedListener() {
@@ -104,12 +106,6 @@ public class MapFragment extends Fragment {
             public void onLoadCompleted(Venue _venue, Map _map, final MapView _mapView, Floor floor, Marker marker) {
                 mapView = _mapView;
                 mapView.hideAllWidgets();
-
-                ViewGroup viewGroup = (ViewGroup) getView();
-                viewGroup.removeAllViews();
-                viewGroup.addView(mapView);
-
-                setupButton(viewGroup, venueId);
             }
         };
 

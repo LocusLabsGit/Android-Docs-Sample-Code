@@ -26,7 +26,7 @@ import com.locuslabs.sdk.maps.view.MapView;
 public class MapActivity extends Activity {
 
     // Static
-    public static final String ACCOUNT_ID =             "A11F4Y6SZRXH4X";
+    public static final String ACCOUNT_ID =             "A1WL022SSU9J1V";
     private static final int PERMISSIONS_REQUEST_CODE = 1000;
 
     // Var
@@ -113,7 +113,7 @@ public class MapActivity extends Activity {
             public void onReady() {
 
                 venueDatabase = new VenueDatabase();
-                loadVenueAndMap("lax", "name of the venue you want to appear");
+                loadVenueAndMap("mia", "name of the venue you want to appear");
             }
         });
     }

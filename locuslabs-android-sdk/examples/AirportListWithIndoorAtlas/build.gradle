@@ -24,5 +24,6 @@ allprojects {
             // needed for IndoorAtlas (see https://docs.indooratlas.com/develop/android/sdk-setup/)
             url "http://indooratlas-ltd.bintray.com/mvn-public-beta"
         }
+        maven { url "https://jitpack.io" }
     }
 }

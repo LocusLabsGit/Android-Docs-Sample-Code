@@ -20,5 +20,6 @@ allprojects {
         maven {
             url "${sdkRoot}/maven/releases"
         }
+        maven { url "https://jitpack.io" }
     }
 }

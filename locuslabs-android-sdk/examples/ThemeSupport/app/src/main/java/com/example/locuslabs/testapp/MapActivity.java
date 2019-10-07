@@ -7,17 +7,16 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.locuslabs.sdk.configuration.Logger;
-import com.locuslabs.sdk.maps.model.Venue;
-import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.model.Floor;
 import com.locuslabs.sdk.maps.model.Map;
 import com.locuslabs.sdk.maps.model.Marker;
 import com.locuslabs.sdk.maps.model.Theme;
+import com.locuslabs.sdk.maps.model.Venue;
+import com.locuslabs.sdk.maps.model.VenueDatabase;
 import com.locuslabs.sdk.maps.view.MapView;
 
 /**
@@ -176,22 +175,22 @@ public class MapActivity extends Activity {
                 .setProperty("view.poi.header.location.color.text",Color.WHITE)
                 .setProperty("view.poi.header.location.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.location.color.background",Color.TRANSPARENT)
-                .setProperty("view.poi.header.location.font.name", typeface_b)
-                .setProperty("view.poi.header.location.font.style", typeface_b.getStyle())
+                .setProperty("view.poi.header.location.font.name", typeface_c)
+                .setProperty("view.poi.header.location.font.style", typeface_c.getStyle())
                 .setProperty("view.poi.header.location.font.size", 16.0)
                 // POI Header Security
                 .setProperty("view.poi.header.security.color.text",Color.WHITE)
                 .setProperty("view.poi.header.security.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.security.color.background",Color.TRANSPARENT)
-                .setProperty("view.poi.header.security.font.name", typeface_b)
-                .setProperty("view.poi.header.security.font.style", typeface_b.getStyle())
+                .setProperty("view.poi.header.security.font.name", typeface_c)
+                .setProperty("view.poi.header.security.font.style", typeface_c.getStyle())
                 .setProperty("view.poi.header.security.font.size", 16.0)
                 // POI Header Level
                 .setProperty("view.poi.header.level.color.text",Color.WHITE)
                 .setProperty("view.poi.header.level.color.tint",Color.WHITE)
                 .setProperty("view.poi.header.level.color.background",Color.TRANSPARENT)
-                .setProperty("view.poi.header.level.font.name", typeface_b)
-                .setProperty("view.poi.header.level.font.style", typeface_b.getStyle())
+                .setProperty("view.poi.header.level.font.name", typeface_c)
+                .setProperty("view.poi.header.level.font.style", typeface_c.getStyle())
                 .setProperty("view.poi.header.level.font.size", 16.0)
                 // POI Carousel
                 .setProperty("view.poi.carousel.color.background",Color.DKGRAY)
@@ -250,13 +249,13 @@ public class MapActivity extends Activity {
                 .setProperty("view.poi.button.font.style", typeface_b.getStyle())
                 .setProperty("view.poi.button.font.size", 13.0)
                 // POI Operational Times - Day
-                .setProperty("view.poi.time.day.color.text",Color.WHITE)
+                .setProperty("view.poi.time.day.color.text",Color.YELLOW)
                 .setProperty("view.poi.time.day.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.time.day.font.name", typeface_a)
                 .setProperty("view.poi.time.day.font.style", typeface_a.getStyle())
                 .setProperty("view.poi.time.day.font.size", 16.0)
                 // POI Operational Times - Hour
-                .setProperty("view.poi.time.hour.color.text",Color.LTGRAY)
+                .setProperty("view.poi.time.hour.color.text",Color.YELLOW)
                 .setProperty("view.poi.time.hour.color.background",Color.TRANSPARENT)
                 .setProperty("view.poi.time.hour.font.name", typeface_c)
                 .setProperty("view.poi.time.hour.font.style", typeface_c.getStyle())

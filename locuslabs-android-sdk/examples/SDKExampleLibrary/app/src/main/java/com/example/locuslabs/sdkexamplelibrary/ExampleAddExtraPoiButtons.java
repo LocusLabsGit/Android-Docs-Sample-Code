@@ -157,8 +157,8 @@ public class ExampleAddExtraPoiButtons extends Activity {
             public List<ButtonDefinition> extraButtonsForPoiPopup(POI poi) {
                 List<ButtonDefinition> result = new ArrayList<>();
 
-                result.add(new ButtonDefinition("FakeName", "https://placehold.it/24/ff0000/ffffff"));
-                result.add(new ButtonDefinition("TestName", "https://placehold.it/24/0000ff/ffffff"));
+                result.add(new ButtonDefinition("FakeName", "https://placehold.it/24/ff0000/ffffff")); // note use https instead of http
+                result.add(new ButtonDefinition("TestName", "https://placehold.it/24/0000ff/ffffff")); // note use https instead of http
                 return result;
             }
         });

@@ -9,6 +9,7 @@ com.locuslabs.sdk.internal.maps.controller
 com.locuslabs.sdk.internal.maps.controller.api
 com.locuslabs.sdk.internal.maps.holder
 com.locuslabs.sdk.internal.maps.model
+com.locuslabs.sdk.internal.maps.model.meetings
 com.locuslabs.sdk.internal.maps.model.notification
 com.locuslabs.sdk.internal.maps.model.searchresult
 com.locuslabs.sdk.internal.maps.view
@@ -21,5 +22,7 @@ com.locuslabs.sdk.maps.implementation
 com.locuslabs.sdk.maps.implementation.overlay
 com.locuslabs.sdk.maps.model
 com.locuslabs.sdk.maps.view
+com.locuslabs.sdk.meetingreservations
+com.locuslabs.sdk.meetingreservations.model
 com.locuslabs.sdk.tagview
 com.locuslabs.sdk.utility

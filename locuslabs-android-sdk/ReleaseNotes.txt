@@ -1,3 +1,48 @@
+LocusLabs Android SDK v2.2.12 2019-09-26
+
+Bug Fixes and Improvements:
+- Continued development of new features
+
+LocusLabs Android SDK v2.2.11 2019-09-23
+
+Bug Fixes and Improvements:
+- Removed unused libraries
+
+LocusLabs Android SDK v2.2.10 2019-09-16
+
+Bug Fixes and Improvements:
+- Expanded tappable area of Get Directions button on POI screen
+- Fixed bug preventing message "No accessible routes available" from displaying
+- Adjusted font size for small fonts on map
+- Reintroduced animated navigation line arrows with more efficient resource consumption
+- Migration impact: Add the JitPack repository to your build file (see https://android.maps.locuslabs.com/docs/upgrading-to-22#section-dependency-changes)
+
+LocusLabs Android SDK v2.2.9 2019-09-10
+
+Bug Fixes and Improvements:
+- Refreshed design of POI window (please update your default.json theme file by following these guidelines https://android.maps.locuslabs.com/docs/upgrading-to-22#section-theme-changes)
+- Added Arabic translations
+- Deprecated Venue.supportsStepwiseDirections()
+- Fixed visual bug in POI Images when device is offline
+
+LocusLabs Android SDK v2.2.8 2019-09-02
+
+Bug Fixes and Improvements:
+- Corrected translation of "minutes" abbreviation for Korean
+- Fixed bug where security icon appeared in non-airport POIs
+- Switched POI's location icon to a building for non-airport venues
+- Added amenities specific to non-airport venues
+- Added ROOM INFO section to POIs in non-airport venues
+
+LocusLabs Android SDK v2.2.6 2019-08-16
+
+Bug Fixes and Improvements:
+- Smoothed out navigation animations
+- Changed from floor() to round() for navigation segment time
+- Changed to gray out Next button when the user reaches the last step in a navigation path
+- Prevented swiping down on route guidance from toggling between current step and summary 
+- Removed Litho/YogaLayout from project
+
 LocusLabs Android SDK v2.2.5 2019-08-09
 
 Bug Fixes and Improvements:
