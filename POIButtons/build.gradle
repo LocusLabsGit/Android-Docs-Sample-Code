@@ -20,9 +20,8 @@ allprojects {
         google()
         jcenter()
         // LocusLabs maven reference
-        maven {
-            url "../locuslabs-android-sdk/maven/releases"
-        }
+        maven {url "../locuslabs-android-sdk/maven/releases" }
+        maven {url "https://jitpack.io" }
     }
 }
 
