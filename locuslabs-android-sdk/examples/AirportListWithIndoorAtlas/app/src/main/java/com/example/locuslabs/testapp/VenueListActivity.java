@@ -56,6 +56,7 @@ public class VenueListActivity extends Activity {
                     Manifest.permission.BLUETOOTH_ADMIN,
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED,
                     Manifest.permission.CHANGE_WIFI_STATE,
                     Manifest.permission.ACCESS_WIFI_STATE,
             }, MY_ID);

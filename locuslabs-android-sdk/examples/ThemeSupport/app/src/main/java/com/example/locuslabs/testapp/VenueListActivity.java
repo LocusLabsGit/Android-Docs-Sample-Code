@@ -49,7 +49,8 @@ public class VenueListActivity extends Activity {
                     Manifest.permission.BLUETOOTH,
                     Manifest.permission.BLUETOOTH_ADMIN,
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED
             }, MY_ID);
         }
 

@@ -139,6 +139,7 @@ public class MapFragment extends Fragment {
         }
 
         this.button.setVisibility(View.VISIBLE);
+        viewGroup.removeView(this.button);
         viewGroup.addView(this.button);
     }
 }

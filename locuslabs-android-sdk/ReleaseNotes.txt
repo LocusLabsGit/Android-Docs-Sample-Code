@@ -1,3 +1,49 @@
+LocusLabs Android SDK v2.3.5 2019-11-16
+
+Bug Fixes and Improvements:
+- Fixed miscellaneous bugs in beacon-based positioning
+
+LocusLabs Android SDK v2.3.4 2019-11-11
+
+Bug Fixes and Improvements:
+- Rewrote beacon-based positioning
+- Implemented background beacon detection (optionally request additional permission to sustain reboot--see https://android.maps.locuslabs.com/docs/upgrading-to-23)
+- Upgraded to com.android.tools.build:gradle:3.5.2
+
+LocusLabs Android SDK v2.3.3 2019-10-31
+
+Bug Fixes and Improvements:
+- Tweaked security lane selection user interface
+
+LocusLabs Android SDK v2.3.2 2019-10-25
+
+Bug Fixes and Improvements:
+- Fixed bug where typing a character after a space cleared the search input
+- Resolved proguard issue preventing auto complete queries
+- Security Lane based routing preview (turn on via Configuration.shared.setSecurityLaneBasedRouting(true);)
+
+LocusLabs Android SDK v2.3.1 2019-10-21
+
+Bug Fixes and Improvements:
+- Fixed bug where compass did not appear during navigation 
+- Removed error from conflict with 'label:' in manifest.xml
+
+LocusLabs Android SDK v2.3.0 2019-10-13
+
+Bug Fixes and Improvements:
+- Updated time picker using ScrollPicker
+- Required using preferred string reference to set 'label:' in manifest.xml. There is a small change you may see an error which you can correct with the following https://android.maps.locuslabs.com/docs/androidmanifest-merge-conflict-because-of-androidlabelstringapp_name
+- Added logic to fall back to displaying text when no image is available for a security lane
+- Allowed UI to hide the compass while the POI window is open
+- Fixed bug with POI photo label "1 of 2"
+- Fixed right-to-left language handling on the search screen
+- Prevented NullPointerException in LocusIPS by completing teardown when removeVenue() is called
+
+LocusLabs Android SDK v2.2.13 2019-10-08
+
+Bug Fixes and Improvements:
+- Continued development of new features
+
 LocusLabs Android SDK v2.2.12 2019-09-26
 
 Bug Fixes and Improvements:

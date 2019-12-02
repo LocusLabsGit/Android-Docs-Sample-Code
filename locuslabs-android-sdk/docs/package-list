@@ -1,7 +1,5 @@
-com.locuslabs.sdk.bluetooth
 com.locuslabs.sdk.configuration
 com.locuslabs.sdk.ibeacon
-com.locuslabs.sdk.ibeacon.service
 com.locuslabs.sdk.indooratlas
 com.locuslabs.sdk.internal
 com.locuslabs.sdk.internal.maps.adapter

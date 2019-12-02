@@ -18,6 +18,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- needed for beacon-based background positioning -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <!-- needed for IndoorAtlas (see https://docs.indooratlas.com/develop/android/sdk-setup/) -->
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
@@ -41,7 +44,7 @@
 
     <application
         android:icon="@mipmap/locuslabs_app_icon"
-        android:label="AirportListWithIndoorAtlas"
+        android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat">
 
         <activity

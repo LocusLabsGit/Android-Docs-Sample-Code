@@ -162,7 +162,7 @@ public class MapActivity extends Activity {
                 mapView.setOnClickPoiListener(new MapView.OnClickPoiListener() {
                     @Override
                     public boolean onClickPoi(Position position, String s) {
-                        Log.d("FFF", "id:" +s);// 1025 Blu20 Bar  Gate 74A id:571
+
                         return false;
                     }
                 });
@@ -213,8 +213,7 @@ public class MapActivity extends Activity {
                                 .name(endPOI.getName())
                                 .createPosition();
 
-                        mapView.showNavigation(startPosition, endPosition);
-
+                        mapView.showNavigationDirect(startPosition, endPosition);
                     }
                 });
             }

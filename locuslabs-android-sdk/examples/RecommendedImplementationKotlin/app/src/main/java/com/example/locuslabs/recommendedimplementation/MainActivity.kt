@@ -3,11 +3,9 @@ package com.example.locuslabs.recommendedimplementation
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.drm.DrmInfoRequest.ACCOUNT_ID
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-
 import com.locuslabs.sdk.configuration.LocusLabs
 import com.locuslabs.sdk.mappacks.LocusLabs_MapPack
 import com.locuslabs.sdk.mappacks.LocusLabs_MapPackFinder
@@ -29,7 +27,14 @@ class MainActivity : Activity() {
                See also app/src/main/AndroidManifest.xml for explanations of why each of these permissions is requested
              */
 
-            requestPermissions(arrayOf(Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), MY_ID)
+            requestPermissions(arrayOf(Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.BLUETOOTH,
+                    Manifest.permission.BLUETOOTH_ADMIN,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED
+            ), MY_ID)
         }
 
         setContentView(R.layout.activity_main)
@@ -41,7 +46,7 @@ class MainActivity : Activity() {
         // If the Map Pack name is null, it will automatically search
         // for a map pack in the assets/locuslabs directory.  The search will
         // look for tar files that begin with "android-<ACCOUNT_ID>-<DATE>.
-        val onUnpackCallback = object: LocusLabs_MapPack.OnUnpackCallback {
+        val onUnpackCallback = object : LocusLabs_MapPack.OnUnpackCallback {
             override fun onUnpack(didInstall: Boolean, exception: Exception?) {
                 Log.d(TAG, didInstall.toString())
                 if (exception != null) {
