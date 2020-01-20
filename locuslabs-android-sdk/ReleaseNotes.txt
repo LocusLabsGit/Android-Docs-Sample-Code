@@ -1,3 +1,19 @@
+LocusLabs Android SDK v2.3.8 2019-12-19
+
+Bug Fixes and Improvements:
+- Catch exception in safelyInstantiateWebView()
+
+LocusLabs Android SDK v2.3.7 2019-12-04
+
+Bug Fixes and Improvements:
+- Fixed bug where turning off bluetooth crashes the app
+
+LocusLabs Android SDK v2.3.6 2019-11-21
+
+Bug Fixes and Improvements:
+- Changed resource booking UI date range default to consistently show 1 work week (e.g. show the user Tuesday - Monday not Tuesday - Tuesday)
+- Fixed IndexOutOfBoundsException when user tapped the keyboard enter key on the navigation input screen
+
 LocusLabs Android SDK v2.3.5 2019-11-16
 
 Bug Fixes and Improvements:

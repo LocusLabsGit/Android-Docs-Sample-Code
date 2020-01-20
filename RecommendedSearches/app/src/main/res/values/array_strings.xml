@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ll_search_keyword">
+        <item>duty free</item>
+        <item>information</item>
+        <item>food</item>
+    </string-array>
+</resources>
