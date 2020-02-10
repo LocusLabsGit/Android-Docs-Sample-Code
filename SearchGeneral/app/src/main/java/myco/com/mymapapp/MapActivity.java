@@ -170,7 +170,7 @@ public class MapActivity extends Activity {
                     @Override
                     public void onReady() {
 
-                        performGeneralSearch("restaurant");
+                        performGeneralSearch("food");
                     }
                 });
             }

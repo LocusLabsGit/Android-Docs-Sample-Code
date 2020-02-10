@@ -161,7 +161,7 @@ public class MapActivity extends Activity {
                     @Override
                     public void onReady() {
 
-                        changeLevelsButtonBackgroundColor();
+                        changeBottomBarIconColors();
                         //changeSearchFieldFont();
                         //changeSearchPanelBackgroundColor();
                     }
@@ -181,10 +181,11 @@ public class MapActivity extends Activity {
         venueDatabase.loadVenueAndMap(venueId, null, listeners);
     }
 
-    private void changeLevelsButtonBackgroundColor() {
+    private void changeBottomBarIconColors() {
 
         ThemeBuilder newTheme = mapView.themeBuilder();
-        newTheme.setProperty("view.overlay.levels.default.color.background", Color.RED);
+        newTheme.setProperty("view.overlay.levels.default.color.tint", Color.RED);
+        newTheme.setProperty("view.overlay.navigate.default.color.tint", Color.RED);
         mapView.setTheme(newTheme.createTheme());
     }
 
