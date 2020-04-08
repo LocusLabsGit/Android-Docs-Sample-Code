@@ -168,7 +168,8 @@ public class MapsActivity extends Activity {
             }
 
             VenueInfo venue = venues.get(position);
-            viewHolder.venueTV.setText(venue.getName() +" (" +venue.getVenueId().toUpperCase() +")");
+            String airportCode = venue.getVenueId().length() > 3 ? venue.getVenueId().substring(0,3) : venue.getVenueId();
+            viewHolder.venueTV.setText(venue.getName() +" (" +airportCode.toUpperCase() +")");
 
             return convertView;
         }
