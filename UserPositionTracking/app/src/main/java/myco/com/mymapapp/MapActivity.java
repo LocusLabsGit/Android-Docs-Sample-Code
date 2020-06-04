@@ -159,10 +159,7 @@ public class MapActivity extends Activity {
                     }
                 });
 
-                // Register to receive location updates
-                UserPositionManager userPositionManager = new UserPositionManager(MapActivity.this);
-                userPositionManager.registerVenue(venue);
-                userPositionManager.registerOnPositionChangedListener(new UserPositionManager.OnPositionChangedListener() {
+                venue.registerOnPositionChangedListener(new UserPositionManager.OnPositionChangedListener() {
                     @Override
                     public void onPositionChanged(Position position) {
 
